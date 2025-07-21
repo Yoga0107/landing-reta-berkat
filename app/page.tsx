@@ -19,38 +19,38 @@ const translations: Translations = {
   vision: { id: "Visi & Misi", en: "Vision & Mission" },
   values: { id: "Nilai & Budaya", en: "Values & Culture" },
   services: { id: "Layanan", en: "Services" },
-  
+
   // Hero Section
   heroTitle1: { id: "EKSPOR-", en: "EXPORT-" },
   heroTitle2: { id: "IMPOR-", en: "IMPORT-" },
   heroTitle3: { id: "DOMESTIK", en: "DOMESTIC" },
-  heroDescription: { 
-    id: "Solusi logistik komprehensif untuk semua kebutuhan pengiriman Anda. Dari angkutan udara hingga kargo laut, kami memberikan keunggulan di seluruh dunia.", 
-    en: "Comprehensive logistics solutions for all your shipping needs. From air freight to ocean cargo, we deliver excellence across the globe." 
+  heroDescription: {
+    id: "Solusi logistik komprehensif untuk semua kebutuhan pengiriman Anda. Dari angkutan udara hingga kargo laut, kami memberikan keunggulan di seluruh dunia.",
+    en: "Comprehensive logistics solutions for all your shipping needs. From air freight to ocean cargo, we deliver excellence across the globe."
   },
   ourServices: { id: "Layanan Kami", en: "Our Services" },
   learnMore: { id: "Pelajari Lebih Lanjut", en: "Learn More" },
   operations247: { id: "Operasional 24/7", en: "24/7 Operations" },
   globalCoverage: { id: "Jangkauan Global", en: "Global Coverage" },
-  
+
   // Profile Section
   profileTitle: { id: "Profil", en: "Profile" },
-  profileText1: { 
-    id: "PT. Reta Berkat Jaya menyediakan layanan ekstensif dalam menangani pengiriman internasional dan domestik. Didirikan sejak 2024, kami telah membantu beberapa pelanggan kami dengan layanan yang komprehensif, efektif dan efisien.", 
-    en: "PT. Reta Berkat Jaya provides extensive services in handling international and domestic shipments. Established since 2024, we have helped some of our customers with comprehensive, effective and efficient services." 
+  profileText1: {
+    id: "PT. Reta Berkat Jaya menyediakan layanan ekstensif dalam menangani pengiriman internasional dan domestik. Didirikan sejak 2024, kami telah membantu beberapa pelanggan kami dengan layanan yang komprehensif, efektif dan efisien.",
+    en: "PT. Reta Berkat Jaya provides extensive services in handling international and domestic shipments. Established since 2024, we have helped some of our customers with comprehensive, effective and efficient services."
   },
-  profileText2: { 
-    id: "Kami menawarkan berbagai layanan sesuai kebutuhan pelanggan. Untuk ekspor impor kami menyediakan custom clearance, ocean freight, air freight, dan layanan trucking. Untuk domestik kami menyediakan domestic ocean freight, domestic air freight, trucking, dan layanan agen kurir.", 
-    en: "We offer a variety of services according to customer needs. For export import we provide custom clearance, ocean freight, air freight, and trucking services. For domestic we provide domestic ocean freight, domestic air freight, trucking, and courier agent services." 
+  profileText2: {
+    id: "Kami menawarkan berbagai layanan sesuai kebutuhan pelanggan. Untuk ekspor impor kami menyediakan custom clearance, ocean freight, air freight, dan layanan trucking. Untuk domestik kami menyediakan domestic ocean freight, domestic air freight, trucking, dan layanan agen kurir.",
+    en: "We offer a variety of services according to customer needs. For export import we provide custom clearance, ocean freight, air freight, and trucking services. For domestic we provide domestic ocean freight, domestic air freight, trucking, and courier agent services."
   },
-  profileText3: { 
-    id: "Pelanggan kami berasal dari berbagai latar belakang, baik individu maupun korporat. Kami terus berinovasi dalam meningkatkan kualitas layanan dan akan selalu membantu memberikan solusi untuk memenuhi kebutuhan pengiriman pelanggan.", 
-    en: "Our customers come from various backgrounds, both individuals and corporate. We continue to innovate in improving the quality of service and will always help provide solutions to meet customer shipping needs." 
+  profileText3: {
+    id: "Pelanggan kami berasal dari berbagai latar belakang, baik individu maupun korporat. Kami terus berinovasi dalam meningkatkan kualitas layanan dan akan selalu membantu memberikan solusi untuk memenuhi kebutuhan pengiriman pelanggan.",
+    en: "Our customers come from various backgrounds, both individuals and corporate. We continue to innovate in improving the quality of service and will always help provide solutions to meet customer shipping needs."
   },
   established: { id: "Didirikan", en: "Established" },
   service: { id: "Layanan", en: "Service" },
   global: { id: "Global", en: "Global" },
-  
+
   // Vision and Mission Section
   visionMissionTitle: { id: "Visi dan Misi", en: "Vision and Mission" },
   visionLabel: { id: "Visi :", en: "Vision :" },
@@ -59,7 +59,7 @@ const translations: Translations = {
   mission1: { id: "Memberikan pelayanan optimal untuk kepuasan pelanggan.", en: "Provide optimal service for customer satisfaction." },
   mission2: { id: "Membangun kemitraan bisnis dan menerapkan lingkungan kerja yang bertanggung jawab.", en: "Building business partnerships and implementing a responsible work environment." },
   mission3: { id: "Menciptakan lapangan kerja yang luas dengan sumber daya manusia yang profesional di bidangnya.", en: "Creating a wide range of jobs with professional human resources in their fields." },
-  
+
   // Corporate Values Section
   corporateValuesTitle: { id: "Nilai & Budaya Perusahaan", en: "Corporate Value & Culture" },
   valuesIntro: { id: "Kami memiliki nilai-nilai yang terus kami jaga dan nilai-nilai tersebut adalah:", en: "We have values that we continue to maintain and those values are:" },
@@ -69,7 +69,7 @@ const translations: Translations = {
   speedText: { id: "Selalu memberikan solusi yang tepat dan cepat.", en: "Always provide the right and fast solution." },
   deliveryResult: { id: "HASIL PENGIRIMAN :", en: "DELIVERY RESULT :" },
   deliveryText: { id: "Memastikan optimalisasi setiap layanan untuk kepuasan pelanggan.", en: "Ensuring optimization of every service for customer satisfaction." },
-  
+
   // Services Section
   exportImportTitle: { id: "Layanan Ekspor dan Impor", en: "Export and Import Services" },
   airFreight: { id: "Angkutan Udara", en: "Air Freight" },
@@ -81,7 +81,7 @@ const translations: Translations = {
   customClearance: { id: "Bea Cukai", en: "Custom Clearance" },
   customClearanceDesc: { id: "Penanganan dokumen untuk keperluan ekspor atau impor.", en: "Handling document for export or import purposes." },
   contactUsToday: { id: "Hubungi Kami Hari Ini", en: "Contact Us Today" },
-  
+
   // Footer
   trustedPartner: { id: "Mitra terpercaya Anda untuk solusi logistik komprehensif di seluruh dunia.", en: "Your trusted partner for comprehensive logistics solutions worldwide." },
   contact: { id: "Kontak", en: "Contact" },
@@ -140,9 +140,8 @@ export default function Home() {
         {[...Array(16)].map((_, i) => (
           <div
             key={i}
-            className={`w-3 h-3 border border-orange-400 ${
-              i % 3 === 0 ? 'bg-orange-400/30' : ''
-            } ${i % 5 === 0 ? 'w-6 h-6' : ''}`}
+            className={`w-3 h-3 border border-orange-400 ${i % 3 === 0 ? 'bg-orange-400/30' : ''
+              } ${i % 5 === 0 ? 'w-6 h-6' : ''}`}
           />
         ))}
       </div>
@@ -174,14 +173,13 @@ export default function Home() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-white hover:text-orange-400 transition-colors ${
-                    activeSection === item.id ? 'text-orange-400' : ''
-                  }`}
+                  className={`text-white hover:text-orange-400 transition-colors ${activeSection === item.id ? 'text-orange-400' : ''
+                    }`}
                 >
                   {item.label}
                 </button>
               ))}
-              
+
               {/* Language Toggle */}
               <button
                 onClick={toggleLanguage}
@@ -220,7 +218,7 @@ export default function Home() {
                     {item.label}
                   </button>
                 ))}
-                
+
                 {/* Mobile Language Toggle */}
                 <button
                   onClick={toggleLanguage}
@@ -239,9 +237,9 @@ export default function Home() {
       <section id="home" className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
         <GeometricPattern className="top-20 right-20" />
         <GeometricPattern className="bottom-20 left-20" />
-        
+
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent"></div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center">
           <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
             <div className="space-y-8">
@@ -261,22 +259,22 @@ export default function Home() {
                   {t('heroTitle2')}<br />
                   {t('heroTitle3')}
                 </h2>
-                
+
                 <p className="text-xl text-white/90 max-w-lg">
                   {t('heroDescription')}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                  <Button 
+                  <Button
                     onClick={() => scrollToSection('services')}
                     className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg"
                   >
                     {t('ourServices')}
                   </Button>
-                  <Button 
+                  <Button
                     asChild
-                    variant="outline" 
-                    className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
+                    variant="outline"
+                    className="border-white text-black hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
                   >
                     <Link href="/services">{t('learnMore')}</Link>
                   </Button>
@@ -285,9 +283,9 @@ export default function Home() {
             </div>
 
             <div className="hidden lg:block relative">
-              <img 
-                src="https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Logistics Operations" 
+              <img
+                src="https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Logistics Operations"
                 className="rounded-2xl shadow-2xl"
               />
               <div className="absolute -bottom-6 -left-6 bg-orange-500 p-4 rounded-xl shadow-lg">
@@ -307,7 +305,7 @@ export default function Home() {
       {/* Profile Section */}
       <section id="profile" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative">
         <GeometricPattern className="top-10 left-10" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
@@ -323,16 +321,16 @@ export default function Home() {
 
             <div className="space-y-8">
               <h2 className="text-5xl font-bold text-white mb-8">{t('profileTitle')}</h2>
-              
+
               <div className="space-y-6 text-white">
                 <p className="text-lg leading-relaxed">
                   {t('profileText1')}
                 </p>
-                
+
                 <p className="text-lg leading-relaxed">
                   {t('profileText2')}
                 </p>
-                
+
                 <p className="text-lg leading-relaxed">
                   {t('profileText3')}
                 </p>
@@ -360,12 +358,12 @@ export default function Home() {
       {/* Vision and Mission Section */}
       <section id="vision" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative">
         <GeometricPattern className="top-20 right-20" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-12">
               <h2 className="text-5xl font-bold text-white">{t('visionMissionTitle')}</h2>
-              
+
               <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-4">{t('visionLabel')}</h3>
@@ -395,9 +393,9 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <img 
-                src="https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Port Operations" 
+              <img
+                src="https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Port Operations"
                 className="rounded-2xl shadow-2xl w-full"
               />
             </div>
@@ -408,20 +406,20 @@ export default function Home() {
       {/* Corporate Values Section */}
       <section id="values" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative">
         <GeometricPattern className="bottom-20 left-20" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
-              <img 
-                src="https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Professional Worker" 
+              <img
+                src="https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Professional Worker"
                 className="rounded-2xl shadow-2xl w-full"
               />
             </div>
 
             <div className="order-1 lg:order-2 space-y-8">
               <h2 className="text-5xl font-bold text-white">{t('corporateValuesTitle')}</h2>
-              
+
               <p className="text-lg text-white leading-relaxed">
                 {t('valuesIntro')}
               </p>
@@ -456,12 +454,12 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative">
         <GeometricPattern className="top-10 right-10" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="text-5xl font-bold text-white">{t('exportImportTitle')}</h2>
-              
+
               <div className="space-y-8">
                 <div className="flex items-start space-x-4">
                   <Plane className="text-orange-400 mt-1" size={24} />
@@ -496,7 +494,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <Button 
+              <Button
                 asChild
                 className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg mt-8"
               >
@@ -506,9 +504,9 @@ export default function Home() {
 
             <div className="relative">
               <div className="rounded-full overflow-hidden w-96 h-96 mx-auto shadow-2xl">
-                <img 
-                  src="https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Container Port" 
+                <img
+                  src="https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Container Port"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -532,7 +530,7 @@ export default function Home() {
                 {t('trustedPartner')}
               </p>
             </div>
-            
+
             <div>
               <h4 className="text-white font-semibold mb-4">{t('services')}</h4>
               <ul className="space-y-2 text-white/80">
@@ -542,7 +540,7 @@ export default function Home() {
                 <li>{t('customClearance')}</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-white font-semibold mb-4">{t('contact')}</h4>
               <div className="text-white/80">
@@ -551,7 +549,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          
+
           <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
             <p>{t('copyright')}</p>
           </div>
