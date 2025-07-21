@@ -166,13 +166,13 @@ export default function ServicesPage() {
       id: 'why-us',
       title: t('whyUsTitle'),
       description: t('whyUsDesc'),
-      href: '/services/why-us'
+      href: '/why-us'
     },
     {
       id: 'our-customers',
       title: t('ourCustomerTitle'),
       description: t('ourCustomerDesc'),
-      href: '/services/our-customers'
+      href: '/our-customers'
     }
   ];
 
