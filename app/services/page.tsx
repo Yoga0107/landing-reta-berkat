@@ -27,7 +27,7 @@ const translations: Translations = {
     exportImportTitle: { id: "Layanan Ekspor & Impor", en: "Export & Import Services" },
     exportImportDesc: { id: "Layanan lengkap untuk kebutuhan ekspor dan impor internasional", en: "Complete services for international export and import needs" },
 
-    customClearanceTitle: { id: "Layanan Bea Cukai", en: "Custom Clearance Service" },
+    customClearanceTitle: { id: "Layanan Custom Clearance", en: "Custom Clearance Service" },
     customClearanceDesc: { id: "Penanganan dokumen dan proses bea cukai yang efisien", en: "Efficient customs documentation and clearance processes" },
 
     oceanFreightTitle: { id: "Layanan Angkutan Laut", en: "Ocean Freight Service" },
@@ -79,6 +79,14 @@ export default function ServicesPage() {
         return translations[key] ? translations[key][language] : key;
     };
 
+/*************  ✨ Windsurf Command ⭐  *************/
+    /**
+     * Toggles the language of the page between Indonesian and English.
+     *
+     * This function is called when the language toggle button is clicked.
+     * It sets the language state to the opposite of the current language.
+     */
+/*******  c4cbc9d1-6fa7-48ed-9f28-4a2a1fcc3655  *******/
     const toggleLanguage = () => {
         setLanguage(prev => prev === 'id' ? 'en' : 'id');
     };
@@ -123,14 +131,6 @@ export default function ServicesPage() {
             icon: Plane,
             color: 'bg-purple-500',
             href: '/services/sky-freight'
-        },
-        {
-            id: 'domestic',
-            title: t('domesticTitle'),
-            description: t('domesticDesc'),
-            icon: Package,
-            color: 'bg-indigo-500',
-            href: '/services/domestic'
         }
     ];
 
@@ -141,7 +141,7 @@ export default function ServicesPage() {
             description: t('deliverySeaDesc'),
             icon: Ship,
             color: 'bg-blue-500',
-            href: '/services/delivery-sea'
+            href: '/services/domestic/delivery-by-sea'
         },
         {
             id: 'delivery-air',
@@ -149,7 +149,7 @@ export default function ServicesPage() {
             description: t('deliveryAirDesc'),
             icon: Plane,
             color: 'bg-purple-500',
-            href: '/services/delivery-air'
+            href: '/services/domestic/delivery-by-sky'
         },
         {
             id: 'delivery-land',
@@ -157,7 +157,7 @@ export default function ServicesPage() {
             description: t('deliveryLandDesc'),
             icon: Truck,
             color: 'bg-orange-500',
-            href: '/services/delivery-land'
+            href: '/services/domestic/delivery-by-land'
         }
     ];
 

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Ship, Clock, Shield, CheckCircle, Phone, Mail, Languages, MapPin, Zap, Anchor, Users } from 'lucide-react';
+import { ArrowLeft, Truck, MapPin, Clock, Shield, CheckCircle, Phone, Mail, Languages, Navigation, Users, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface Translations {
@@ -17,86 +17,88 @@ const translations: Translations = {
   backToServices: { id: "Kembali ke Layanan", en: "Back to Services" },
   
   // Page Title
-  oceanFreightService: { id: "Layanan Angkutan Laut", en: "Ocean Freight Service" },
-  oceanSubtitle: { id: "Solusi pengiriman laut yang ekonomis dan handal untuk kargo volume besar", en: "Economical and reliable ocean shipping solution for large volume cargo" },
+  deliveryByLand: { id: "Pengiriman Darat", en: "Delivery by Land" },
+  landSubtitle: { id: "Layanan pengiriman darat yang fleksibel dan terjangkau untuk distribusi barang di seluruh Indonesia", en: "Flexible and affordable land shipping service for goods distribution across Indonesia" },
   
   // Hero Section
   heroDescription: { 
-    id: "Layanan angkutan laut yang komprehensif dengan jaringan global untuk memenuhi kebutuhan pengiriman kargo volume besar. Kami menyediakan layanan FCL dan LCL dengan jadwal sailing reguler ke berbagai pelabuhan dunia.", 
-    en: "Comprehensive ocean freight service with global network to meet large volume cargo shipping needs. We provide FCL and LCL services with regular sailing schedules to various world ports." 
+    id: "Layanan pengiriman darat yang fleksibel dan terjangkau untuk distribusi barang di Pulau Jawa, Sumatera, dan Kalimantan. Solusi door-to-door yang efisien dengan berbagai pilihan armada.", 
+    en: "Flexible and affordable land shipping service for goods distribution in Java, Sumatra, and Kalimantan. Efficient door-to-door solutions with various fleet options." 
   },
   
   // Services
-  fclService: { id: "FCL (Full Container Load)", en: "FCL (Full Container Load)" },
-  fclDesc: { 
-    id: "Layanan container penuh untuk kargo volume besar dengan berbagai ukuran container 20ft, 40ft, dan 40ft HC. Ideal untuk shipment besar dan barang yang memerlukan handling khusus.", 
-    en: "Full container service for large volume cargo with various container sizes 20ft, 40ft, and 40ft HC. Ideal for large shipments and goods requiring special handling." 
+  localDelivery: { id: "Local Delivery", en: "Local Delivery" },
+  localDesc: { 
+    id: "Layanan pengiriman lokal dalam kota dengan waktu pengiriman same-day untuk kebutuhan distribusi cepat.", 
+    en: "Local delivery service within the city with same-day delivery time for fast distribution needs." 
   },
   
-  lclService: { id: "LCL (Less Container Load)", en: "LCL (Less Container Load)" },
-  lclDesc: { 
-    id: "Layanan konsolidasi untuk kargo volume kecil yang digabungkan dengan shipment lain. Solusi cost-effective untuk pengiriman yang tidak memerlukan container penuh.", 
-    en: "Consolidation service for small volume cargo combined with other shipments. Cost-effective solution for shipments that don't require full container." 
+  interCity: { id: "Inter-City Delivery", en: "Inter-City Delivery" },
+  interCityDesc: { 
+    id: "Layanan pengiriman antar kota dengan jadwal reguler dan tracking real-time untuk memantau perjalanan kargo.", 
+    en: "Inter-city delivery service with regular schedules and real-time tracking to monitor cargo journey." 
   },
   
-  breakbulk: { id: "Breakbulk Cargo", en: "Breakbulk Cargo" },
-  breakbulkDesc: { 
-    id: "Layanan untuk kargo besar dan berat yang tidak dapat dimasukkan ke dalam container standar seperti mesin industri, kendaraan, dan project cargo.", 
-    en: "Service for large and heavy cargo that cannot fit in standard containers such as industrial machinery, vehicles, and project cargo." 
+  portTransfer: { id: "Port Transfer", en: "Port Transfer" },
+  portTransferDesc: { 
+    id: "Layanan transfer dari/ke pelabuhan untuk mendukung kegiatan ekspor-impor dengan handling yang profesional.", 
+    en: "Transfer service from/to ports to support export-import activities with professional handling." 
   },
   
-  roro: { id: "RoRo (Roll-on/Roll-off)", en: "RoRo (Roll-on/Roll-off)" },
-  roroDesc: { 
-    id: "Layanan khusus untuk kendaraan dan machinery yang dapat dikendarai langsung ke dalam kapal. Ideal untuk mobil, truk, dan alat berat.", 
-    en: "Special service for vehicles and machinery that can be driven directly onto the ship. Ideal for cars, trucks, and heavy equipment." 
+  warehouseDistribution: { id: "Warehouse Distribution", en: "Warehouse Distribution" },
+  warehouseDesc: { 
+    id: "Layanan distribusi dari gudang ke berbagai titik tujuan dengan sistem manajemen inventory yang terintegrasi.", 
+    en: "Distribution service from warehouse to various destinations with integrated inventory management system." 
   },
   
   // Features
-  featuresTitle: { id: "Keunggulan Layanan Angkutan Laut Kami", en: "Our Ocean Freight Service Excellence" },
-  feature1: { id: "Global Network", en: "Global Network" },
-  feature1Desc: { id: "Akses ke 500+ pelabuhan dunia", en: "Access to 500+ world ports" },
-  feature2: { id: "Regular Schedule", en: "Regular Schedule" },
-  feature2Desc: { id: "Jadwal sailing tetap dan terprediksi", en: "Fixed and predictable sailing schedule" },
-  feature3: { id: "Competitive Rate", en: "Competitive Rate" },
-  feature3Desc: { id: "Tarif kompetitif untuk semua rute", en: "Competitive rates for all routes" },
-  feature4: { id: "Cargo Insurance", en: "Cargo Insurance" },
-  feature4Desc: { id: "Asuransi kargo untuk perlindungan maksimal", en: "Cargo insurance for maximum protection" },
+  featuresTitle: { id: "Keunggulan Layanan Darat Kami", en: "Our Land Service Excellence" },
+  feature1: { id: "Door-to-Door", en: "Door-to-Door" },
+  feature1Desc: { id: "Layanan pickup dan delivery langsung ke alamat", en: "Direct pickup and delivery service to address" },
+  feature2: { id: "GPS Tracking", en: "GPS Tracking" },
+  feature2Desc: { id: "Pemantauan real-time posisi kendaraan", en: "Real-time vehicle position monitoring" },
+  feature3: { id: "Flexible Schedule", en: "Flexible Schedule" },
+  feature3Desc: { id: "Jadwal pengiriman yang dapat disesuaikan", en: "Customizable delivery schedule" },
+  feature4: { id: "Full Insurance", en: "Full Insurance" },
+  feature4Desc: { id: "Asuransi penuh untuk keamanan kargo", en: "Full insurance for cargo security" },
   
-  // Container Types
-  containerTypesTitle: { id: "Jenis Container", en: "Container Types" },
-  dryContainer: { id: "Dry Container", en: "Dry Container" },
-  dryDesc: { id: "Container standar untuk general cargo", en: "Standard container for general cargo" },
-  reefer: { id: "Reefer Container", en: "Reefer Container" },
-  reeferDesc: { id: "Container berpendingin untuk barang mudah rusak", en: "Refrigerated container for perishable goods" },
-  openTop: { id: "Open Top Container", en: "Open Top Container" },
-  openTopDesc: { id: "Container terbuka untuk kargo tinggi", en: "Open container for high cargo" },
+  // Fleet Types
+  fleetTypesTitle: { id: "Jenis Armada", en: "Fleet Types" },
+  cdd: { id: "CDD (Colt Diesel Double)", en: "CDD (Colt Diesel Double)" },
+  cddDesc: { id: "Kapasitas: 5 ton, Cocok untuk kargo sedang", en: "Capacity: 5 tons, Suitable for medium cargo" },
+  cde: { id: "CDE (Colt Diesel Engkel)", en: "CDE (Colt Diesel Engkel)" },
+  cdeDesc: { id: "Kapasitas: 2.5 ton, Ideal untuk kargo kecil", en: "Capacity: 2.5 tons, Ideal for small cargo" },
+  fuso: { id: "Fuso Truck", en: "Fuso Truck" },
+  fusoDesc: { id: "Kapasitas: 8-16 ton, Untuk kargo besar", en: "Capacity: 8-16 tons, For large cargo" },
   
-  // Routes
-  routesTitle: { id: "Rute Utama", en: "Main Routes" },
-  route1: { id: "Asia - Eropa: Singapore, Rotterdam, Hamburg", en: "Asia - Europe: Singapore, Rotterdam, Hamburg" },
-  route2: { id: "Asia - Amerika: Los Angeles, New York, Long Beach", en: "Asia - America: Los Angeles, New York, Long Beach" },
-  route3: { id: "Intra Asia: Jakarta, Bangkok, Manila, Ho Chi Minh", en: "Intra Asia: Jakarta, Bangkok, Manila, Ho Chi Minh" },
-  route4: { id: "Timur Tengah: Jebel Ali, Dammam, Kuwait", en: "Middle East: Jebel Ali, Dammam, Kuwait" },
+  // Coverage Areas
+  coverageTitle: { id: "Area Jangkauan", en: "Coverage Areas" },
+  java: { id: "Pulau Jawa", en: "Java Island" },
+  javaDesc: { id: "Jakarta, Bandung, Semarang, Surabaya, Yogyakarta", en: "Jakarta, Bandung, Semarang, Surabaya, Yogyakarta" },
+  sumatra: { id: "Pulau Sumatera", en: "Sumatra Island" },
+  sumatraDesc: { id: "Medan, Pekanbaru, Palembang, Lampung", en: "Medan, Pekanbaru, Palembang, Lampung" },
+  kalimantan: { id: "Pulau Kalimantan", en: "Kalimantan Island" },
+  kalimantanDesc: { id: "Balikpapan, Banjarmasin, Pontianak, Samarinda", en: "Balikpapan, Banjarmasin, Pontianak, Samarinda" },
   
   // Process
-  processTitle: { id: "Proses Angkutan Laut", en: "Ocean Freight Process" },
-  step1: { id: "Booking & Space", en: "Booking & Space" },
-  step1Desc: { id: "Reservasi space dan container", en: "Space and container reservation" },
-  step2: { id: "Documentation", en: "Documentation" },
-  step2Desc: { id: "Persiapan shipping documents", en: "Shipping documents preparation" },
-  step3: { id: "Loading & Sailing", en: "Loading & Sailing" },
-  step3Desc: { id: "Pemuatan dan keberangkatan kapal", en: "Loading and vessel departure" },
-  step4: { id: "Discharge & Delivery", en: "Discharge & Delivery" },
-  step4Desc: { id: "Bongkar muat dan pengantaran", en: "Discharge and delivery" },
+  processTitle: { id: "Proses Pengiriman Darat", en: "Land Shipping Process" },
+  step1: { id: "Order & Pickup", en: "Order & Pickup" },
+  step1Desc: { id: "Pemesanan layanan dan penjemputan barang", en: "Service booking and goods pickup" },
+  step2: { id: "Loading & Departure", en: "Loading & Departure" },
+  step2Desc: { id: "Pemuatan barang dan keberangkatan kendaraan", en: "Goods loading and vehicle departure" },
+  step3: { id: "Transit & Tracking", en: "Transit & Tracking" },
+  step3Desc: { id: "Perjalanan dengan monitoring GPS real-time", en: "Journey with real-time GPS monitoring" },
+  step4: { id: "Delivery & POD", en: "Delivery & POD" },
+  step4Desc: { id: "Pengantaran dan bukti penerimaan", en: "Delivery and proof of delivery" },
   
   // CTA
   getQuote: { id: "Dapatkan Penawaran", en: "Get Quote" },
   contactUs: { id: "Hubungi Kami", en: "Contact Us" },
-  ctaTitle: { id: "Siap Mengirim Kargo Laut Anda?", en: "Ready to Ship Your Ocean Cargo?" },
-  ctaDescription: { id: "Hubungi tim ocean freight kami untuk mendapatkan penawaran terbaik dan solusi pengiriman laut yang sesuai dengan kebutuhan bisnis Anda.", en: "Contact our ocean freight team to get the best quotes and ocean shipping solutions that suit your business needs." }
+  ctaTitle: { id: "Siap Mengirim Kargo Darat Anda?", en: "Ready to Ship Your Land Cargo?" },
+  ctaDescription: { id: "Hubungi tim ahli kami untuk konsultasi gratis dan penawaran terbaik untuk kebutuhan pengiriman darat Anda.", en: "Contact our expert team for free consultation and best quotes for your land shipping needs." }
 };
 
-export default function OceanFreightPage() {
+export default function DeliveryByLandPage() {
   const [language, setLanguage] = useState<'id' | 'en'>('id');
 
   const t = (key: string): string => {
@@ -118,15 +120,6 @@ export default function OceanFreightPage() {
             } ${i % 5 === 0 ? 'w-6 h-6' : ''}`}
           />
         ))}
-      </div>
-    </div>
-  );
-
-  const FloatingOrbs = ({ className = "" }: { className?: string }) => (
-    <div className={`absolute ${className} pointer-events-none`}>
-      <div className="relative">
-        <div className="w-32 h-32 bg-gradient-to-br from-orange-400/20 to-blue-400/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-8 left-8 w-16 h-16 bg-gradient-to-br from-blue-300/30 to-orange-300/30 rounded-full blur-lg animate-bounce"></div>
       </div>
     </div>
   );
@@ -164,7 +157,6 @@ export default function OceanFreightPage() {
       {/* Hero Section */}
       <section className="pt-24 pb-16 relative overflow-hidden">
         <GeometricPattern className="top-20 right-20" />
-        <FloatingOrbs className="top-32 left-1/4" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -176,15 +168,15 @@ export default function OceanFreightPage() {
               
               <div className="flex items-center space-x-4 mb-6">
                 <div className="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center">
-                  <Ship className="text-white" size={32} />
+                  <Truck className="text-white" size={32} />
                 </div>
-                <h1 className="text-4xl lg:text-5xl font-bold text-white">
-                  {t('oceanFreightService')}
+                <h1 className="text-5xl lg:text-6xl font-bold text-white">
+                  {t('deliveryByLand')}
                 </h1>
               </div>
               
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                {t('oceanSubtitle')}
+                {t('landSubtitle')}
               </p>
               
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
@@ -208,16 +200,16 @@ export default function OceanFreightPage() {
 
             <div className="relative">
               <img 
-                src="https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Ocean Freight" 
+                src="https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                alt="Land Freight" 
                 className="rounded-2xl shadow-2xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 bg-orange-500 p-4 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
-                  <Anchor className="text-white" size={24} />
+                  <Navigation className="text-white" size={24} />
                   <div className="text-white">
-                    <p className="font-semibold">Global</p>
-                    <p className="text-sm opacity-90">Shipping</p>
+                    <p className="font-semibold">Door-to-Door</p>
+                    <p className="text-sm opacity-90">Service</p>
                   </div>
                 </div>
               </div>
@@ -229,15 +221,14 @@ export default function OceanFreightPage() {
       {/* Services Section */}
       <section className="py-20 relative">
         <GeometricPattern className="bottom-20 left-20" />
-        <FloatingOrbs className="bottom-32 right-20" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             {[
-              { icon: Ship, title: t('fclService'), desc: t('fclDesc') },
-              { icon: Anchor, title: t('lclService'), desc: t('lclDesc') },
-              { icon: MapPin, title: t('breakbulk'), desc: t('breakbulkDesc') },
-              { icon: Zap, title: t('roro'), desc: t('roroDesc') }
+              { icon: MapPin, title: t('localDelivery'), desc: t('localDesc') },
+              { icon: Truck, title: t('interCity'), desc: t('interCityDesc') },
+              { icon: Navigation, title: t('portTransfer'), desc: t('portTransferDesc') },
+              { icon: Users, title: t('warehouseDistribution'), desc: t('warehouseDesc') }
             ].map((service, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/20 transition-all duration-300">
                 <div className="flex items-center space-x-4 mb-6">
@@ -265,8 +256,8 @@ export default function OceanFreightPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { icon: MapPin, title: t('feature1'), desc: t('feature1Desc') },
-              { icon: Clock, title: t('feature2'), desc: t('feature2Desc') },
-              { icon: Zap, title: t('feature3'), desc: t('feature3Desc') },
+              { icon: Navigation, title: t('feature2'), desc: t('feature2Desc') },
+              { icon: Clock, title: t('feature3'), desc: t('feature3Desc') },
               { icon: Shield, title: t('feature4'), desc: t('feature4Desc') }
             ].map((feature, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300">
@@ -279,54 +270,52 @@ export default function OceanFreightPage() {
         </div>
       </section>
 
-      {/* Container Types */}
+      {/* Fleet Types */}
       <section className="py-20 relative">
-        <FloatingOrbs className="top-20 right-20" />
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">{t('containerTypesTitle')}</h2>
+            <h2 className="text-4xl font-bold text-white mb-6">{t('fleetTypesTitle')}</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: t('dryContainer'), desc: t('dryDesc') },
-              { title: t('reefer'), desc: t('reeferDesc') },
-              { title: t('openTop'), desc: t('openTopDesc') }
-            ].map((container, index) => (
+              { title: t('cdd'), desc: t('cddDesc') },
+              { title: t('cde'), desc: t('cdeDesc') },
+              { title: t('fuso'), desc: t('fusoDesc') }
+            ].map((fleet, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
                 <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Ship className="text-white" size={24} />
+                  <Truck className="text-white" size={24} />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">{container.title}</h3>
-                <p className="text-white/80">{container.desc}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{fleet.title}</h3>
+                <p className="text-white/80">{fleet.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Routes */}
+      {/* Coverage Areas */}
       <section className="py-20 relative">
         <GeometricPattern className="bottom-10 left-10" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">{t('routesTitle')}</h2>
+            <h2 className="text-4xl font-bold text-white mb-6">{t('coverageTitle')}</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              t('route1'),
-              t('route2'),
-              t('route3'),
-              t('route4')
-            ].map((route, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-md rounded-xl p-6 flex items-center space-x-4">
-                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">{index + 1}</span>
+              { title: t('java'), desc: t('javaDesc') },
+              { title: t('sumatra'), desc: t('sumatraDesc') },
+              { title: t('kalimantan'), desc: t('kalimantanDesc') }
+            ].map((area, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="text-white" size={24} />
                 </div>
-                <span className="text-white font-medium">{route}</span>
+                <h3 className="text-xl font-semibold text-white mb-3">{area.title}</h3>
+                <p className="text-white/80">{area.desc}</p>
               </div>
             ))}
           </div>

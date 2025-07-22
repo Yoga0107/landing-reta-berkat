@@ -16,6 +16,8 @@ const translations: Translations = {
     // Navigation
     home: { id: "Beranda", en: "Home" },
     services: { id: "Layanan", en: "Services" },
+    about: { id: "Tentang", en: "About" },
+    contact: { id: "Kontak", en: "Contact" },
     backToServices: { id: "Kembali ke Layanan", en: "Back to Services" },
 
     // Page Content

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Ship, Clock, Shield, CheckCircle, Phone, Mail, Languages, MapPin, Zap, Anchor, Users } from 'lucide-react';
+import { ArrowLeft, Ship, Anchor, Globe, CheckCircle, Phone, Mail, Languages, MapPin, Clock, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface Translations {
@@ -17,86 +17,86 @@ const translations: Translations = {
   backToServices: { id: "Kembali ke Layanan", en: "Back to Services" },
   
   // Page Title
-  oceanFreightService: { id: "Layanan Angkutan Laut", en: "Ocean Freight Service" },
-  oceanSubtitle: { id: "Solusi pengiriman laut yang ekonomis dan handal untuk kargo volume besar", en: "Economical and reliable ocean shipping solution for large volume cargo" },
+  deliveryBySea: { id: "Pengiriman Laut", en: "Delivery by Sea" },
+  seaSubtitle: { id: "Solusi pengiriman laut yang ekonomis dan handal untuk seluruh kepulauan Indonesia", en: "Economical and reliable sea shipping solutions across Indonesian archipelago" },
   
   // Hero Section
   heroDescription: { 
-    id: "Layanan angkutan laut yang komprehensif dengan jaringan global untuk memenuhi kebutuhan pengiriman kargo volume besar. Kami menyediakan layanan FCL dan LCL dengan jadwal sailing reguler ke berbagai pelabuhan dunia.", 
-    en: "Comprehensive ocean freight service with global network to meet large volume cargo shipping needs. We provide FCL and LCL services with regular sailing schedules to various world ports." 
+    id: "Layanan pengiriman laut domestik yang ekonomis untuk kargo dalam jumlah besar ke seluruh kepulauan Indonesia. Cocok untuk pengiriman antar pulau dengan biaya yang efisien dan kapasitas besar.", 
+    en: "Economical domestic sea shipping service for large cargo volumes across Indonesian archipelago. Perfect for inter-island shipping with cost-efficient rates and large capacity." 
   },
   
   // Services
-  fclService: { id: "FCL (Full Container Load)", en: "FCL (Full Container Load)" },
-  fclDesc: { 
-    id: "Layanan container penuh untuk kargo volume besar dengan berbagai ukuran container 20ft, 40ft, dan 40ft HC. Ideal untuk shipment besar dan barang yang memerlukan handling khusus.", 
-    en: "Full container service for large volume cargo with various container sizes 20ft, 40ft, and 40ft HC. Ideal for large shipments and goods requiring special handling." 
+  containerShipping: { id: "Container Shipping", en: "Container Shipping" },
+  containerDesc: { 
+    id: "Layanan pengiriman menggunakan container FCL (Full Container Load) dan LCL (Less Container Load) untuk berbagai jenis kargo.", 
+    en: "Shipping service using FCL (Full Container Load) and LCL (Less Container Load) containers for various types of cargo." 
   },
   
-  lclService: { id: "LCL (Less Container Load)", en: "LCL (Less Container Load)" },
-  lclDesc: { 
-    id: "Layanan konsolidasi untuk kargo volume kecil yang digabungkan dengan shipment lain. Solusi cost-effective untuk pengiriman yang tidak memerlukan container penuh.", 
-    en: "Consolidation service for small volume cargo combined with other shipments. Cost-effective solution for shipments that don't require full container." 
+  bulkCargo: { id: "Kargo Curah", en: "Bulk Cargo" },
+  bulkDesc: { 
+    id: "Pengiriman kargo curah untuk komoditas dalam jumlah besar seperti batu bara, biji-bijian, dan material konstruksi.", 
+    en: "Bulk cargo shipping for large commodities such as coal, grains, and construction materials." 
   },
   
-  breakbulk: { id: "Breakbulk Cargo", en: "Breakbulk Cargo" },
-  breakbulkDesc: { 
-    id: "Layanan untuk kargo besar dan berat yang tidak dapat dimasukkan ke dalam container standar seperti mesin industri, kendaraan, dan project cargo.", 
-    en: "Service for large and heavy cargo that cannot fit in standard containers such as industrial machinery, vehicles, and project cargo." 
+  breakBulk: { id: "Break Bulk Cargo", en: "Break Bulk Cargo" },
+  breakBulkDesc: { 
+    id: "Pengiriman barang-barang besar yang tidak dapat dikemas dalam container standar seperti mesin berat dan kendaraan.", 
+    en: "Shipping of large items that cannot be packed in standard containers such as heavy machinery and vehicles." 
   },
   
-  roro: { id: "RoRo (Roll-on/Roll-off)", en: "RoRo (Roll-on/Roll-off)" },
-  roroDesc: { 
-    id: "Layanan khusus untuk kendaraan dan machinery yang dapat dikendarai langsung ke dalam kapal. Ideal untuk mobil, truk, dan alat berat.", 
-    en: "Special service for vehicles and machinery that can be driven directly onto the ship. Ideal for cars, trucks, and heavy equipment." 
+  projectCargo: { id: "Project Cargo", en: "Project Cargo" },
+  projectDesc: { 
+    id: "Penanganan khusus untuk kargo proyek dengan dimensi dan berat yang tidak standar, memerlukan perencanaan khusus.", 
+    en: "Special handling for project cargo with non-standard dimensions and weight, requiring special planning." 
   },
   
   // Features
-  featuresTitle: { id: "Keunggulan Layanan Angkutan Laut Kami", en: "Our Ocean Freight Service Excellence" },
-  feature1: { id: "Global Network", en: "Global Network" },
-  feature1Desc: { id: "Akses ke 500+ pelabuhan dunia", en: "Access to 500+ world ports" },
-  feature2: { id: "Regular Schedule", en: "Regular Schedule" },
-  feature2Desc: { id: "Jadwal sailing tetap dan terprediksi", en: "Fixed and predictable sailing schedule" },
-  feature3: { id: "Competitive Rate", en: "Competitive Rate" },
-  feature3Desc: { id: "Tarif kompetitif untuk semua rute", en: "Competitive rates for all routes" },
+  featuresTitle: { id: "Keunggulan Layanan Laut Kami", en: "Our Sea Service Excellence" },
+  feature1: { id: "Jaringan Pelabuhan Luas", en: "Wide Port Network" },
+  feature1Desc: { id: "Akses ke 50+ pelabuhan di seluruh Indonesia", en: "Access to 50+ ports across Indonesia" },
+  feature2: { id: "Vessel Tracking", en: "Vessel Tracking" },
+  feature2Desc: { id: "Pemantauan real-time posisi kapal", en: "Real-time vessel position monitoring" },
+  feature3: { id: "Competitive Rates", en: "Competitive Rates" },
+  feature3Desc: { id: "Tarif yang kompetitif untuk semua rute", en: "Competitive rates for all routes" },
   feature4: { id: "Cargo Insurance", en: "Cargo Insurance" },
-  feature4Desc: { id: "Asuransi kargo untuk perlindungan maksimal", en: "Cargo insurance for maximum protection" },
+  feature4Desc: { id: "Asuransi penuh untuk keamanan kargo", en: "Full insurance for cargo security" },
   
   // Container Types
   containerTypesTitle: { id: "Jenis Container", en: "Container Types" },
-  dryContainer: { id: "Dry Container", en: "Dry Container" },
-  dryDesc: { id: "Container standar untuk general cargo", en: "Standard container for general cargo" },
-  reefer: { id: "Reefer Container", en: "Reefer Container" },
-  reeferDesc: { id: "Container berpendingin untuk barang mudah rusak", en: "Refrigerated container for perishable goods" },
-  openTop: { id: "Open Top Container", en: "Open Top Container" },
-  openTopDesc: { id: "Container terbuka untuk kargo tinggi", en: "Open container for high cargo" },
+  container20ft: { id: "Container 20 Feet", en: "20 Feet Container" },
+  container20ftDesc: { id: "Kapasitas: 28 CBM, Berat maksimal: 21.6 ton", en: "Capacity: 28 CBM, Max weight: 21.6 tons" },
+  container40ft: { id: "Container 40 Feet", en: "40 Feet Container" },
+  container40ftDesc: { id: "Kapasitas: 58 CBM, Berat maksimal: 26.5 ton", en: "Capacity: 58 CBM, Max weight: 26.5 tons" },
+  container40hc: { id: "Container 40 HC", en: "40 HC Container" },
+  container40hcDesc: { id: "Kapasitas: 68 CBM, Berat maksimal: 26.5 ton", en: "Capacity: 68 CBM, Max weight: 26.5 tons" },
   
   // Routes
   routesTitle: { id: "Rute Utama", en: "Main Routes" },
-  route1: { id: "Asia - Eropa: Singapore, Rotterdam, Hamburg", en: "Asia - Europe: Singapore, Rotterdam, Hamburg" },
-  route2: { id: "Asia - Amerika: Los Angeles, New York, Long Beach", en: "Asia - America: Los Angeles, New York, Long Beach" },
-  route3: { id: "Intra Asia: Jakarta, Bangkok, Manila, Ho Chi Minh", en: "Intra Asia: Jakarta, Bangkok, Manila, Ho Chi Minh" },
-  route4: { id: "Timur Tengah: Jebel Ali, Dammam, Kuwait", en: "Middle East: Jebel Ali, Dammam, Kuwait" },
+  route1: { id: "Jakarta - Surabaya - Makassar", en: "Jakarta - Surabaya - Makassar" },
+  route2: { id: "Jakarta - Semarang - Balikpapan", en: "Jakarta - Semarang - Balikpapan" },
+  route3: { id: "Surabaya - Banjarmasin - Pontianak", en: "Surabaya - Banjarmasin - Pontianak" },
+  route4: { id: "Jakarta - Medan - Batam", en: "Jakarta - Medan - Batam" },
   
   // Process
-  processTitle: { id: "Proses Angkutan Laut", en: "Ocean Freight Process" },
-  step1: { id: "Booking & Space", en: "Booking & Space" },
-  step1Desc: { id: "Reservasi space dan container", en: "Space and container reservation" },
-  step2: { id: "Documentation", en: "Documentation" },
-  step2Desc: { id: "Persiapan shipping documents", en: "Shipping documents preparation" },
-  step3: { id: "Loading & Sailing", en: "Loading & Sailing" },
-  step3Desc: { id: "Pemuatan dan keberangkatan kapal", en: "Loading and vessel departure" },
-  step4: { id: "Discharge & Delivery", en: "Discharge & Delivery" },
-  step4Desc: { id: "Bongkar muat dan pengantaran", en: "Discharge and delivery" },
+  processTitle: { id: "Proses Pengiriman Laut", en: "Sea Shipping Process" },
+  step1: { id: "Booking & Dokumentasi", en: "Booking & Documentation" },
+  step1Desc: { id: "Pemesanan ruang kapal dan persiapan dokumen", en: "Vessel space booking and document preparation" },
+  step2: { id: "Stuffing Container", en: "Container Stuffing" },
+  step2Desc: { id: "Pemuatan barang ke dalam container", en: "Loading goods into container" },
+  step3: { id: "Pengiriman Laut", en: "Sea Transportation" },
+  step3Desc: { id: "Transportasi laut ke pelabuhan tujuan", en: "Sea transportation to destination port" },
+  step4: { id: "Stripping & Delivery", en: "Stripping & Delivery" },
+  step4Desc: { id: "Pembongkaran dan pengantaran ke alamat tujuan", en: "Unloading and delivery to final destination" },
   
   // CTA
   getQuote: { id: "Dapatkan Penawaran", en: "Get Quote" },
   contactUs: { id: "Hubungi Kami", en: "Contact Us" },
-  ctaTitle: { id: "Siap Mengirim Kargo Laut Anda?", en: "Ready to Ship Your Ocean Cargo?" },
-  ctaDescription: { id: "Hubungi tim ocean freight kami untuk mendapatkan penawaran terbaik dan solusi pengiriman laut yang sesuai dengan kebutuhan bisnis Anda.", en: "Contact our ocean freight team to get the best quotes and ocean shipping solutions that suit your business needs." }
+  ctaTitle: { id: "Siap Mengirim Kargo Laut Anda?", en: "Ready to Ship Your Sea Cargo?" },
+  ctaDescription: { id: "Hubungi tim ahli kami untuk konsultasi gratis dan penawaran terbaik untuk kebutuhan pengiriman laut Anda.", en: "Contact our expert team for free consultation and best quotes for your sea shipping needs." }
 };
 
-export default function OceanFreightPage() {
+export default function DeliveryBySeaPage() {
   const [language, setLanguage] = useState<'id' | 'en'>('id');
 
   const t = (key: string): string => {
@@ -118,15 +118,6 @@ export default function OceanFreightPage() {
             } ${i % 5 === 0 ? 'w-6 h-6' : ''}`}
           />
         ))}
-      </div>
-    </div>
-  );
-
-  const FloatingOrbs = ({ className = "" }: { className?: string }) => (
-    <div className={`absolute ${className} pointer-events-none`}>
-      <div className="relative">
-        <div className="w-32 h-32 bg-gradient-to-br from-orange-400/20 to-blue-400/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-8 left-8 w-16 h-16 bg-gradient-to-br from-blue-300/30 to-orange-300/30 rounded-full blur-lg animate-bounce"></div>
       </div>
     </div>
   );
@@ -164,7 +155,6 @@ export default function OceanFreightPage() {
       {/* Hero Section */}
       <section className="pt-24 pb-16 relative overflow-hidden">
         <GeometricPattern className="top-20 right-20" />
-        <FloatingOrbs className="top-32 left-1/4" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -178,13 +168,13 @@ export default function OceanFreightPage() {
                 <div className="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center">
                   <Ship className="text-white" size={32} />
                 </div>
-                <h1 className="text-4xl lg:text-5xl font-bold text-white">
-                  {t('oceanFreightService')}
+                <h1 className="text-5xl lg:text-6xl font-bold text-white">
+                  {t('deliveryBySea')}
                 </h1>
               </div>
               
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                {t('oceanSubtitle')}
+                {t('seaSubtitle')}
               </p>
               
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
@@ -208,16 +198,16 @@ export default function OceanFreightPage() {
 
             <div className="relative">
               <img 
-                src="https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Ocean Freight" 
+                src="https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                alt="Sea Freight" 
                 className="rounded-2xl shadow-2xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 bg-orange-500 p-4 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <Anchor className="text-white" size={24} />
                   <div className="text-white">
-                    <p className="font-semibold">Global</p>
-                    <p className="text-sm opacity-90">Shipping</p>
+                    <p className="font-semibold">50+ Pelabuhan</p>
+                    <p className="text-sm opacity-90">Seluruh Indonesia</p>
                   </div>
                 </div>
               </div>
@@ -229,15 +219,14 @@ export default function OceanFreightPage() {
       {/* Services Section */}
       <section className="py-20 relative">
         <GeometricPattern className="bottom-20 left-20" />
-        <FloatingOrbs className="bottom-32 right-20" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             {[
-              { icon: Ship, title: t('fclService'), desc: t('fclDesc') },
-              { icon: Anchor, title: t('lclService'), desc: t('lclDesc') },
-              { icon: MapPin, title: t('breakbulk'), desc: t('breakbulkDesc') },
-              { icon: Zap, title: t('roro'), desc: t('roroDesc') }
+              { icon: Ship, title: t('containerShipping'), desc: t('containerDesc') },
+              { icon: Anchor, title: t('bulkCargo'), desc: t('bulkDesc') },
+              { icon: Globe, title: t('breakBulk'), desc: t('breakBulkDesc') },
+              { icon: MapPin, title: t('projectCargo'), desc: t('projectDesc') }
             ].map((service, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/20 transition-all duration-300">
                 <div className="flex items-center space-x-4 mb-6">
@@ -266,8 +255,8 @@ export default function OceanFreightPage() {
             {[
               { icon: MapPin, title: t('feature1'), desc: t('feature1Desc') },
               { icon: Clock, title: t('feature2'), desc: t('feature2Desc') },
-              { icon: Zap, title: t('feature3'), desc: t('feature3Desc') },
-              { icon: Shield, title: t('feature4'), desc: t('feature4Desc') }
+              { icon: Shield, title: t('feature3'), desc: t('feature3Desc') },
+              { icon: Users, title: t('feature4'), desc: t('feature4Desc') }
             ].map((feature, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300">
                 <feature.icon className="text-orange-400 mx-auto mb-4" size={40} />
@@ -281,8 +270,6 @@ export default function OceanFreightPage() {
 
       {/* Container Types */}
       <section className="py-20 relative">
-        <FloatingOrbs className="top-20 right-20" />
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">{t('containerTypesTitle')}</h2>
@@ -290,9 +277,9 @@ export default function OceanFreightPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: t('dryContainer'), desc: t('dryDesc') },
-              { title: t('reefer'), desc: t('reeferDesc') },
-              { title: t('openTop'), desc: t('openTopDesc') }
+              { title: t('container20ft'), desc: t('container20ftDesc') },
+              { title: t('container40ft'), desc: t('container40ftDesc') },
+              { title: t('container40hc'), desc: t('container40hcDesc') }
             ].map((container, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
                 <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -306,7 +293,7 @@ export default function OceanFreightPage() {
         </div>
       </section>
 
-      {/* Routes */}
+      {/* Main Routes */}
       <section className="py-20 relative">
         <GeometricPattern className="bottom-10 left-10" />
         
