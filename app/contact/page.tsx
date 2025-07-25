@@ -102,13 +102,24 @@ export default function ContactPage() {
             [name]: value
         }));
     };
+    
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Handle form submission here
-        console.log('Form submitted:', formData);
-        alert(language === 'id' ? 'Pesan berhasil dikirim!' : 'Message sent successfully!');
-    };
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const message = `Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Company: ${formData.company || '-'}
+Service: ${formData.service}
+Message: ${formData.message}`;
+
+  const encodedMessage = encodeURIComponent(message);
+  const phoneNumber = "6281299090466"; // Ganti dengan nomor WhatsApp tujuan tanpa "+" dan tanda baca
+
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  window.open(whatsappURL, '_blank');
+};
 
     const serviceOptions = [
         { value: 'export-import', label: t('exportImport') },
@@ -166,6 +177,8 @@ export default function ContactPage() {
             phone: "+62 61 2468 1357"
         }
     ];
+
+    
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
