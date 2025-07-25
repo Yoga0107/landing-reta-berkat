@@ -17,7 +17,7 @@ const translations: Translations = {
   backToServices: { id: "Kembali ke Layanan", en: "Back to Services" },
   
   // Page Title
-  customClearanceService: { id: "Layanan Bea Cukai", en: "Custom Clearance Service" },
+  customClearanceService: { id: "Layanan Custom Clearance", en: "Custom Clearance Service" },
   customSubtitle: { id: "Pengurusan dokumen bea cukai yang cepat, akurat, dan sesuai regulasi", en: "Fast, accurate, and regulation-compliant customs document processing" },
   
   // Hero Section
@@ -52,7 +52,7 @@ const translations: Translations = {
   },
   
   // Features
-  featuresTitle: { id: "Keunggulan Layanan Bea Cukai Kami", en: "Our Custom Clearance Service Excellence" },
+  featuresTitle: { id: "Keunggulan Layanan Custom Clearance Kami", en: "Our Custom Clearance Service Excellence" },
   feature1: { id: "Licensed PPJK", en: "Licensed PPJK" },
   feature1Desc: { id: "Tim bersertifikat PPJK resmi", en: "Official PPJK certified team" },
   feature2: { id: "Fast Processing", en: "Fast Processing" },

@@ -194,16 +194,6 @@ export default function ServicesPage() {
                             <Link href="/" className="text-white hover:text-orange-400 transition-colors">
                                 {t('home')}
                             </Link>
-                            <Link href="/services" className="text-orange-400">
-                                {t('services')}
-                            </Link>
-                            <Link href="/about" className="text-white hover:text-orange-400 transition-colors">
-                                {t('about')}
-                            </Link>
-                            <Link href="/contact" className="text-white hover:text-orange-400 transition-colors">
-                                {t('contact')}
-                            </Link>
-
                             {/* Language Toggle */}
                             <button
                                 onClick={toggleLanguage}
@@ -229,15 +219,6 @@ export default function ServicesPage() {
                             <div className="px-2 pt-2 pb-3 space-y-1">
                                 <Link href="/" className="text-white hover:text-orange-400 block px-3 py-2">
                                     {t('home')}
-                                </Link>
-                                <Link href="/services" className="text-orange-400 block px-3 py-2">
-                                    {t('services')}
-                                </Link>
-                                <Link href="/about" className="text-white hover:text-orange-400 block px-3 py-2">
-                                    {t('about')}
-                                </Link>
-                                <Link href="/contact" className="text-white hover:text-orange-400 block px-3 py-2">
-                                    {t('contact')}
                                 </Link>
 
                                 <button

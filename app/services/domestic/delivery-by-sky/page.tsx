@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { Ship, Plane, Truck, Globe, CheckCircle, Menu, X, Languages, ArrowRight, Star, Users, Award, Clock, Zap, Shield } from 'lucide-react';
+import { useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, Plane, Clock, Shield, CheckCircle, Phone, Mail, Languages, MapPin, Zap, Globe, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface Translations {
@@ -13,88 +14,90 @@ interface Translations {
 
 const translations: Translations = {
   // Navigation
-  home: { id: "Beranda", en: "Home" },
-  profile: { id: "Profil", en: "Profile" },
-  vision: { id: "Visi & Misi", en: "Vision & Mission" },
-  values: { id: "Nilai & Budaya", en: "Values & Culture" },
-  services: { id: "Layanan", en: "Services" },
+  backToServices: { id: "Kembali ke Layanan", en: "Back to Services" },
+  
+  // Page Title
+  deliveryBySky: { id: "Pengiriman Udara", en: "Delivery by Sky" },
+  skySubtitle: { id: "Layanan pengiriman udara cepat dan aman untuk kargo prioritas ke seluruh Indonesia", en: "Fast and secure air shipping service for priority cargo across Indonesia" },
   
   // Hero Section
-  heroTitle1: { id: "EKSPOR-", en: "EXPORT-" },
-  heroTitle2: { id: "IMPOR-", en: "IMPORT-" },
-  heroTitle3: { id: "DOMESTIK", en: "DOMESTIC" },
   heroDescription: { 
-    id: "Solusi logistik komprehensif untuk semua kebutuhan pengiriman Anda. Dari angkutan udara hingga kargo laut, kami memberikan keunggulan di seluruh dunia.", 
-    en: "Comprehensive logistics solutions for all your shipping needs. From air freight to ocean cargo, we deliver excellence across the globe." 
+    id: "Layanan pengiriman udara domestik yang cepat dan aman untuk kargo prioritas ke seluruh kota besar di Indonesia. Ideal untuk barang urgent, bernilai tinggi, dan memerlukan penanganan khusus.", 
+    en: "Fast and secure domestic air shipping service for priority cargo to major cities across Indonesia. Ideal for urgent, high-value goods requiring special handling." 
   },
-  ourServices: { id: "Layanan Kami", en: "Our Services" },
-  learnMore: { id: "Pelajari Lebih Lanjut", en: "Learn More" },
-  operations247: { id: "Operasional 24/7", en: "24/7 Operations" },
-  globalCoverage: { id: "Jangkauan Global", en: "Global Coverage" },
   
-  // Profile Section
-  profileTitle: { id: "Profil", en: "Profile" },
-  profileText1: { 
-    id: "PT. Reta Berkat Jaya menyediakan layanan ekstensif dalam menangani pengiriman internasional dan domestik. Didirikan sejak 2024, kami telah membantu beberapa pelanggan kami dengan layanan yang komprehensif, efektif dan efisien.", 
-    en: "PT. Reta Berkat Jaya provides extensive services in handling international and domestic shipments. Established since 2024, we have helped some of our customers with comprehensive, effective and efficient services." 
+  // Services
+  expressAir: { id: "Express Air", en: "Express Air" },
+  expressDesc: { 
+    id: "Layanan pengiriman udara tercepat dengan same-day dan next-day delivery untuk barang urgent dan time-sensitive.", 
+    en: "Fastest air shipping service with same-day and next-day delivery for urgent and time-sensitive goods." 
   },
-  profileText2: { 
-    id: "Kami menawarkan berbagai layanan sesuai kebutuhan pelanggan. Untuk ekspor impor kami menyediakan custom clearance, ocean freight, air freight, dan layanan trucking. Untuk domestik kami menyediakan domestic ocean freight, domestic air freight, trucking, dan layanan agen kurir.", 
-    en: "We offer a variety of services according to customer needs. For export import we provide custom clearance, ocean freight, air freight, and trucking services. For domestic we provide domestic ocean freight, domestic air freight, trucking, and courier agent services." 
+  
+  standardAir: { id: "Standard Air", en: "Standard Air" },
+  standardDesc: { 
+    id: "Layanan pengiriman udara reguler dengan waktu transit 1-3 hari untuk kargo umum dengan harga yang kompetitif.", 
+    en: "Regular air shipping service with 1-3 days transit time for general cargo at competitive rates." 
   },
-  profileText3: { 
-    id: "Pelanggan kami berasal dari berbagai latar belakang, baik individu maupun korporat. Kami terus berinovasi dalam meningkatkan kualitas layanan dan akan selalu membantu memberikan solusi untuk memenuhi kebutuhan pengiriman pelanggan.", 
-    en: "Our customers come from various backgrounds, both individuals and corporate. We continue to innovate in improving the quality of service and will always help provide solutions to meet customer shipping needs." 
+  
+  consolidation: { id: "Consolidation Service", en: "Consolidation Service" },
+  consolidationDesc: { 
+    id: "Layanan konsolidasi untuk pengiriman kargo kecil dengan menggabungkan beberapa shipment untuk efisiensi biaya.", 
+    en: "Consolidation service for small cargo shipments by combining multiple shipments for cost efficiency." 
   },
-  established: { id: "Didirikan", en: "Established" },
-  service: { id: "Layanan", en: "Service" },
-  global: { id: "Global", en: "Global" },
   
-  // Vision and Mission Section
-  visionMissionTitle: { id: "Visi dan Misi", en: "Vision and Mission" },
-  visionLabel: { id: "Visi :", en: "Vision :" },
-  visionText: { id: "Menjadi penyedia layanan pengiriman terbaik.", en: "To be the best delivery service provider." },
-  missionLabel: { id: "Misi :", en: "Mission :" },
-  mission1: { id: "Memberikan pelayanan optimal untuk kepuasan pelanggan.", en: "Provide optimal service for customer satisfaction." },
-  mission2: { id: "Membangun kemitraan bisnis dan menerapkan lingkungan kerja yang bertanggung jawab.", en: "Building business partnerships and implementing a responsible work environment." },
-  mission3: { id: "Menciptakan lapangan kerja yang luas dengan sumber daya manusia yang profesional di bidangnya.", en: "Creating a wide range of jobs with professional human resources in their fields." },
+  charterFlight: { id: "Charter Flight", en: "Charter Flight" },
+  charterDesc: { 
+    id: "Layanan charter pesawat khusus untuk kargo besar, project cargo, atau pengiriman dengan jadwal khusus.", 
+    en: "Special aircraft charter service for large cargo, project cargo, or shipments with special schedules." 
+  },
   
-  // Corporate Values Section
-  corporateValuesTitle: { id: "Nilai & Budaya Perusahaan", en: "Corporate Value & Culture" },
-  valuesIntro: { id: "Kami memiliki nilai-nilai yang terus kami jaga dan nilai-nilai tersebut adalah:", en: "We have values that we continue to maintain and those values are:" },
-  trustIntegrity: { id: "KEPERCAYAAN dan INTEGRITAS:", en: "TRUST and INTEGRITY:" },
-  trustText: { id: "Selalu memberikan pelayanan optimal dan menjamin kepuasan pelanggan.", en: "Always provide optimal service and guarantee customer satisfaction." },
-  speed: { id: "KECEPATAN :", en: "SPEED :" },
-  speedText: { id: "Selalu memberikan solusi yang tepat dan cepat.", en: "Always provide the right and fast solution." },
-  deliveryResult: { id: "HASIL PENGIRIMAN :", en: "DELIVERY RESULT :" },
-  deliveryText: { id: "Memastikan optimalisasi setiap layanan untuk kepuasan pelanggan.", en: "Ensuring optimization of every service for customer satisfaction." },
+  // Features
+  featuresTitle: { id: "Keunggulan Layanan Udara Kami", en: "Our Air Service Excellence" },
+  feature1: { id: "Coverage Luas", en: "Wide Coverage" },
+  feature1Desc: { id: "Jangkauan ke 50+ kota besar di Indonesia", en: "Coverage to 50+ major cities in Indonesia" },
+  feature2: { id: "Real-time Tracking", en: "Real-time Tracking" },
+  feature2Desc: { id: "Pemantauan real-time status penerbangan", en: "Real-time flight status monitoring" },
+  feature3: { id: "Temperature Control", en: "Temperature Control" },
+  feature3Desc: { id: "Fasilitas kontrol suhu untuk kargo sensitif", en: "Temperature control facility for sensitive cargo" },
+  feature4: { id: "24/7 Support", en: "24/7 Support" },
+  feature4Desc: { id: "Tim support siap membantu 24 jam", en: "Support team ready to assist 24 hours" },
   
-  // Services Section
-  exportImportTitle: { id: "Layanan Ekspor dan Impor", en: "Export and Import Services" },
-  airFreight: { id: "Angkutan Udara", en: "Air Freight" },
-  airFreightDesc: { id: "Layanan pengiriman udara ke berbagai negara untuk keperluan Ekspor dan Impor.", en: "Air delivery service to various countries for Export and Import purposes." },
-  oceanFreight: { id: "Angkutan Laut", en: "Ocean Freight" },
-  oceanFreightDesc: { id: "Layanan pengiriman laut ke berbagai negara untuk keperluan Ekspor dan Impor.", en: "Ocean delivery service to various countries for Export and Import purposes." },
-  trucking: { id: "Angkutan Darat", en: "Trucking" },
-  truckingDesc: { id: "Layanan pengiriman darat dari gudang atau pabrik ke pelabuhan dan sebaliknya.", en: "In-land delivery service from warehouse or factory to port and vice versa." },
-  customClearance: { id: "Bea Cukai", en: "Custom Clearance" },
-  customClearanceDesc: { id: "Penanganan dokumen untuk keperluan ekspor atau impor.", en: "Handling document for export or import purposes." },
-  contactUsToday: { id: "Hubungi Kami Hari Ini", en: "Contact Us Today" },
+  // Cargo Types
+  cargoTypesTitle: { id: "Jenis Kargo", en: "Cargo Types" },
+  generalCargo: { id: "General Cargo", en: "General Cargo" },
+  generalDesc: { id: "Kargo umum seperti dokumen, spare parts, elektronik", en: "General cargo such as documents, spare parts, electronics" },
+  perishable: { id: "Perishable Goods", en: "Perishable Goods" },
+  perishableDesc: { id: "Barang mudah rusak seperti makanan segar, obat-obatan", en: "Perishable goods such as fresh food, medicines" },
+  dangerous: { id: "Dangerous Goods", en: "Dangerous Goods" },
+  dangerousDesc: { id: "Barang berbahaya dengan sertifikasi IATA DGR", en: "Dangerous goods with IATA DGR certification" },
   
-  // Footer
-  trustedPartner: { id: "Mitra terpercaya Anda untuk solusi logistik komprehensif di seluruh dunia.", en: "Your trusted partner for comprehensive logistics solutions worldwide." },
-  contact: { id: "Kontak", en: "Contact" },
-  email: { id: "Email: info@retaberkatjaya.com", en: "Email: info@retaberkatjaya.com" },
-  phone: { id: "Telepon: +62 XXX XXX XXXX", en: "Phone: +62 XXX XXX XXXX" },
-  copyright: { id: "© 2024 PT. Reta Berkat Jaya. Semua hak dilindungi.", en: "© 2024 PT. Reta Berkat Jaya. All rights reserved." }
+  // Destinations
+  destinationsTitle: { id: "Destinasi Utama", en: "Main Destinations" },
+  dest1: { id: "Jakarta - Surabaya - Medan", en: "Jakarta - Surabaya - Medan" },
+  dest2: { id: "Jakarta - Makassar - Balikpapan", en: "Jakarta - Makassar - Balikpapan" },
+  dest3: { id: "Jakarta - Denpasar - Manado", en: "Jakarta - Denpasar - Manado" },
+  dest4: { id: "Surabaya - Pontianak - Pekanbaru", en: "Surabaya - Pontianak - Pekanbaru" },
+  
+  // Process
+  processTitle: { id: "Proses Pengiriman Udara", en: "Air Shipping Process" },
+  step1: { id: "Booking & AWB", en: "Booking & AWB" },
+  step1Desc: { id: "Pemesanan space dan penerbitan Air Waybill", en: "Space booking and Air Waybill issuance" },
+  step2: { id: "Cargo Acceptance", en: "Cargo Acceptance" },
+  step2Desc: { id: "Penerimaan dan pemeriksaan kargo di warehouse", en: "Cargo acceptance and inspection at warehouse" },
+  step3: { id: "Flight Departure", en: "Flight Departure" },
+  step3Desc: { id: "Pemuatan ke pesawat dan keberangkatan", en: "Loading to aircraft and departure" },
+  step4: { id: "Delivery", en: "Delivery" },
+  step4Desc: { id: "Pengantaran ke alamat tujuan", en: "Delivery to final destination" },
+  
+  // CTA
+  getQuote: { id: "Dapatkan Penawaran", en: "Get Quote" },
+  contactUs: { id: "Hubungi Kami", en: "Contact Us" },
+  ctaTitle: { id: "Siap Mengirim Kargo Udara Anda?", en: "Ready to Ship Your Air Cargo?" },
+  ctaDescription: { id: "Hubungi tim ahli kami untuk konsultasi gratis dan penawaran terbaik untuk kebutuhan pengiriman udara Anda.", en: "Contact our expert team for free consultation and best quotes for your air shipping needs." }
 };
 
-export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+export default function DeliveryBySkyPage() {
   const [language, setLanguage] = useState<'id' | 'en'>('id');
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const heroRef = useRef<HTMLDivElement>(null);
 
   const t = (key: string): string => {
     return translations[key] ? translations[key][language] : key;
@@ -104,63 +107,23 @@ export default function Home() {
     setLanguage(prev => prev === 'id' ? 'en' : 'id');
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'profile', 'vision', 'values', 'services'];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetBottom = offsetTop + element.offsetHeight;
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
-  };
-
   const GeometricPattern = ({ className = "" }: { className?: string }) => (
     <div className={`absolute ${className}`}>
-      <div className="grid grid-cols-4 gap-2 opacity-20 animate-pulse">
+      <div className="grid grid-cols-4 gap-2 opacity-20">
         {[...Array(16)].map((_, i) => (
           <div
             key={i}
-            className={`w-3 h-3 border border-orange-400 transition-all duration-1000 ${
+            className={`w-3 h-3 border border-orange-400 ${
               i % 3 === 0 ? 'bg-orange-400/30' : ''
-            } ${i % 5 === 0 ? 'w-6 h-6 rotate-45' : ''}`}
+            } ${i % 5 === 0 ? 'w-6 h-6' : ''}`}
           />
         ))}
       </div>
     </div>
   );
 
-  const FloatingElements = () => (
-    <>
-      <div className="absolute top-1/4 left-10 w-20 h-20 bg-orange-400/20 rounded-full animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
-      <div className="absolute top-1/3 right-20 w-16 h-16 bg-blue-400/20 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
-      <div className="absolute bottom-1/4 left-1/4 w-12 h-12 bg-orange-300/30 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
-      <div className="absolute bottom-1/3 right-1/3 w-14 h-14 bg-blue-300/20 rounded-full animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '3.5s' }}></div>
-    </>
-  );
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -172,27 +135,11 @@ export default function Home() {
               <span className="text-white font-semibold text-lg">PT. Reta Berkat Jaya</span>
             </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              {[
-                { id: 'home', label: t('home') },
-                { id: 'profile', label: t('profile') },
-                { id: 'vision', label: t('vision') },
-                { id: 'values', label: t('values') },
-                { id: 'services', label: t('services') }
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-white hover:text-orange-400 transition-colors ${
-                    activeSection === item.id ? 'text-orange-400' : ''
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+            <div className="flex items-center space-x-4">
+              <Link href="/services" className="text-white hover:text-orange-400 transition-colors">
+                {t('backToServices')}
+              </Link>
               
-              {/* Language Toggle */}
               <button
                 onClick={toggleLanguage}
                 className="flex items-center space-x-2 text-white hover:text-orange-400 transition-colors bg-white/10 px-3 py-2 rounded-lg"
@@ -201,300 +148,67 @@ export default function Home() {
                 <span className="text-sm font-medium">{language.toUpperCase()}</span>
               </button>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-white"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
-
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden bg-blue-900/95 backdrop-blur-md">
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {[
-                  { id: 'home', label: t('home') },
-                  { id: 'profile', label: t('profile') },
-                  { id: 'vision', label: t('vision') },
-                  { id: 'values', label: t('values') },
-                  { id: 'services', label: t('services') }
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="text-white hover:text-orange-400 block px-3 py-2 w-full text-left"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-                
-                {/* Mobile Language Toggle */}
-                <button
-                  onClick={toggleLanguage}
-                  className="flex items-center space-x-2 text-white hover:text-orange-400 px-3 py-2 w-full"
-                >
-                  <Languages size={18} />
-                  <span className="text-sm font-medium">{language.toUpperCase()}</span>
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden" ref={heroRef}>
-        <GeometricPattern className="top-20 right-20" />
-        <GeometricPattern className="bottom-20 left-20" />
-        <FloatingElements />
-        
-        {/* Animated Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent animate-pulse"></div>
-        
-        {/* Animated Particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white/30 rounded-full animate-ping"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`
-              }}
-            />
-          ))}
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center">
-          <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
-            <div className="space-y-8 animate-fade-in-up">
-              <div className="flex items-center space-x-4 mb-8 animate-slide-in-left">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300">
-                  <span className="text-blue-900 font-bold text-2xl">bc</span>
-                </div>
-                <div>
-                  <h1 className="text-white text-xl font-semibold">PT. RETA BERKAT JAYA</h1>
-                  <p className="text-orange-400 text-sm">BERKAT JAYA CARGO</p>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <h2 className="text-6xl lg:text-7xl font-bold text-white leading-tight animate-slide-in-right">
-                  {t('heroTitle1')}<br />
-                  {t('heroTitle2')}<br />
-                  {t('heroTitle3')}
-                </h2>
-                
-                <p className="text-xl text-white/90 max-w-lg animate-fade-in" style={{ animationDelay: '0.5s' }}>
-                  {t('heroDescription')}
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 pt-6 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-                  <Button 
-                    onClick={() => scrollToSection('services')}
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    <ArrowRight className="mr-2" size={20} />
-                    {t('ourServices')}
-                  </Button>
-                  <Button 
-                    onClick={() => scrollToSection('profile')}
-                    variant="outline" 
-                    className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg transform hover:scale-105 transition-all duration-300"
-                  >
-                    {t('learnMore')}
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden lg:block relative animate-fade-in-up" style={{ animationDelay: '1s' }}>
-              <img 
-                src="https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Logistics Operations" 
-                className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-orange-500 p-4 rounded-xl shadow-lg animate-bounce">
-                <div className="flex items-center space-x-3">
-                  <Ship className="text-white" size={24} />
-                  <div className="text-white">
-                    <p className="font-semibold">{t('operations247')}</p>
-                    <p className="text-sm opacity-90">{t('globalCoverage')}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Stats Section */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 animate-fade-in-up" style={{ animationDelay: '1.5s' }}>
-            <div className="flex items-center space-x-8">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-orange-400">2024</div>
-                <div className="text-white text-sm">{t('established')}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-orange-400">24/7</div>
-                <div className="text-white text-sm">{t('service')}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-orange-400">50+</div>
-                <div className="text-white text-sm">Cities</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Profile Section */}
-      <section id="profile" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative">
-        <GeometricPattern className="top-10 left-10" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="w-80 h-80 bg-white rounded-full flex items-center justify-center mx-auto lg:mx-0 shadow-2xl">
-                <div className="text-center">
-                  <div className="w-32 h-32 bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold text-4xl">bc</span>
-                  </div>
-                  <h3 className="text-blue-900 font-bold text-xl">BERKAT JAYA CARGO</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <h2 className="text-5xl font-bold text-white mb-8">{t('profileTitle')}</h2>
-              
-              <div className="space-y-6 text-white">
-                <p className="text-lg leading-relaxed">
-                  {t('profileText1')}
-                </p>
-                
-                <p className="text-lg leading-relaxed">
-                  {t('profileText2')}
-                </p>
-                
-                <p className="text-lg leading-relaxed">
-                  {t('profileText3')}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-6 pt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-400">2024</div>
-                  <div className="text-white">{t('established')}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-400">24/7</div>
-                  <div className="text-white">{t('service')}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-400">{t('global')}</div>
-                  <div className="text-white">Coverage</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision and Mission Section */}
-      <section id="vision" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative">
+      <section className="pt-24 pb-16 relative overflow-hidden">
         <GeometricPattern className="top-20 right-20" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-12">
-              <h2 className="text-5xl font-bold text-white">{t('visionMissionTitle')}</h2>
+            <div>
+              <Link href="/services" className="inline-flex items-center text-orange-400 hover:text-orange-300 mb-8">
+                <ArrowLeft size={20} className="mr-2" />
+                {t('backToServices')}
+              </Link>
               
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{t('visionLabel')}</h3>
-                  <p className="text-lg text-white leading-relaxed">
-                    {t('visionText')}
-                  </p>
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center">
+                  <Plane className="text-white" size={32} />
                 </div>
-
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-6">{t('missionLabel')}</h3>
-                  <ul className="space-y-4 text-white">
-                    <li className="flex items-start space-x-3">
-                      <CheckCircle className="text-orange-400 mt-1 flex-shrink-0" size={20} />
-                      <span className="text-lg">{t('mission1')}</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <CheckCircle className="text-orange-400 mt-1 flex-shrink-0" size={20} />
-                      <span className="text-lg">{t('mission2')}</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <CheckCircle className="text-orange-400 mt-1 flex-shrink-0" size={20} />
-                      <span className="text-lg">{t('mission3')}</span>
-                    </li>
-                  </ul>
-                </div>
+                <h1 className="text-5xl lg:text-6xl font-bold text-white">
+                  {t('deliveryBySky')}
+                </h1>
               </div>
-            </div>
-
-            <div className="relative">
-              <img 
-                src="https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Port Operations" 
-                className="rounded-2xl shadow-2xl w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Corporate Values Section */}
-      <section id="values" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative">
-        <GeometricPattern className="bottom-20 left-20" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
-              <img 
-                src="https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Professional Worker" 
-                className="rounded-2xl shadow-2xl w-full"
-              />
-            </div>
-
-            <div className="order-1 lg:order-2 space-y-8">
-              <h2 className="text-5xl font-bold text-white">{t('corporateValuesTitle')}</h2>
               
-              <p className="text-lg text-white leading-relaxed">
-                {t('valuesIntro')}
+              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+                {t('skySubtitle')}
               </p>
+              
+              <p className="text-lg text-white/80 mb-8 leading-relaxed">
+                {t('heroDescription')}
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg">
+                  <Phone className="mr-2" size={20} />
+                  {t('getQuote')}
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
+                >
+                  <Mail className="mr-2" size={20} />
+                  {t('contactUs')}
+                </Button>
+              </div>
+            </div>
 
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-3">{t('trustIntegrity')}</h3>
-                  <p className="text-lg text-white leading-relaxed">
-                    {t('trustText')}
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-3">{t('speed')}</h3>
-                  <p className="text-lg text-white leading-relaxed">
-                    {t('speedText')}
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-3">{t('deliveryResult')}</h3>
-                  <p className="text-lg text-white leading-relaxed">
-                    {t('deliveryText')}
-                  </p>
+            <div className="relative">
+              <img 
+                src="https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                alt="Air Freight" 
+                className="rounded-2xl shadow-2xl w-full"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-orange-500 p-4 rounded-xl shadow-lg">
+                <div className="flex items-center space-x-3">
+                  <Zap className="text-white" size={24} />
+                  <div className="text-white">
+                    <p className="font-semibold">Same Day</p>
+                    <p className="text-sm opacity-90">Delivery</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -503,167 +217,158 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
+      <section className="py-20 relative">
+        <GeometricPattern className="bottom-20 left-20" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12">
+            {[
+              { icon: Zap, title: t('expressAir'), desc: t('expressDesc') },
+              { icon: Plane, title: t('standardAir'), desc: t('standardDesc') },
+              { icon: Globe, title: t('consolidation'), desc: t('consolidationDesc') },
+              { icon: MapPin, title: t('charterFlight'), desc: t('charterDesc') }
+            ].map((service, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/20 transition-all duration-300">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
+                    <service.icon className="text-white" size={24} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                </div>
+                <p className="text-white/90 leading-relaxed">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 relative">
         <GeometricPattern className="top-10 right-10" />
-        <FloatingElements />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-white mb-6 animate-fade-in-up">{t('exportImportTitle')}</h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              {t('heroDescription')}
-            </p>
+            <h2 className="text-4xl font-bold text-white mb-6">{t('featuresTitle')}</h2>
           </div>
-          
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-            <div className="space-y-8 animate-slide-in-left">
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/20 transition-all duration-300">
-                <h3 className="text-3xl font-bold text-white mb-6">Ingin Tahu Lebih Lanjut?</h3>
-                <p className="text-white/90 mb-6 leading-relaxed">
-                  Jelajahi berbagai layanan logistik komprehensif kami yang dirancang khusus untuk memenuhi kebutuhan bisnis Anda.
-                </p>
-                <Button 
-                  onClick={() => window.location.href = '/services'}
-                  className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg transform hover:scale-105 transition-all duration-300"
-                >
-                  <ArrowRight className="mr-2" size={20} />
-                  Lihat Semua Layanan
-                </Button>
-              </div>
-            </div>
 
-            <div className="relative animate-slide-in-right">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                  <Plane className="text-orange-400 mb-4" size={32} />
-                  <h4 className="text-white font-semibold mb-2">Air Freight</h4>
-                  <p className="text-white/80 text-sm">Fast delivery worldwide</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                  <Ship className="text-orange-400 mb-4" size={32} />
-                  <h4 className="text-white font-semibold mb-2">Ocean Freight</h4>
-                  <p className="text-white/80 text-sm">Cost-effective shipping</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                  <Truck className="text-orange-400 mb-4" size={32} />
-                  <h4 className="text-white font-semibold mb-2">Trucking</h4>
-                  <p className="text-white/80 text-sm">Door-to-door service</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                  <Globe className="text-orange-400 mb-4" size={32} />
-                  <h4 className="text-white font-semibold mb-2">Custom Clearance</h4>
-                  <p className="text-white/80 text-sm">Expert documentation</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Zap, title: "Fast Processing", desc: "Quick turnaround times for all shipments" },
-              { icon: Shield, title: "Secure Handling", desc: "Full insurance and secure cargo handling" },
-              { icon: Users, title: "Expert Team", desc: "Professional logistics specialists" }
+              { icon: MapPin, title: t('feature1'), desc: t('feature1Desc') },
+              { icon: Clock, title: t('feature2'), desc: t('feature2Desc') },
+              { icon: Shield, title: t('feature3'), desc: t('feature3Desc') },
+              { icon: Users, title: t('feature4'), desc: t('feature4Desc') }
             ].map((feature, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center hover:bg-white/20 transition-all duration-300 transform hover:scale-105 animate-fade-in-up" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
-                <feature.icon className="text-orange-400 mx-auto mb-4" size={48} />
-                <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-                <p className="text-white/80">{feature.desc}</p>
+              <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300">
+                <feature.icon className="text-orange-400 mx-auto mb-4" size={40} />
+                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                <p className="text-white/80 text-sm">{feature.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Quick Services Preview */}
-      <section className="py-20 bg-gradient-to-br from-blue-800 via-blue-900 to-blue-800 relative overflow-hidden">
+      {/* Cargo Types */}
+      <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">Layanan Unggulan Kami</h2>
-            <p className="text-xl text-white/80">Solusi logistik terpercaya untuk semua kebutuhan Anda</p>
+            <h2 className="text-4xl font-bold text-white mb-6">{t('cargoTypesTitle')}</h2>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                title: "Export & Import", 
-                desc: "Layanan ekspor impor profesional dengan handling terpercaya",
-                icon: Globe,
-                link: "/services/export-import"
-              },
-              { 
-                title: "Domestic Services", 
-                desc: "Pengiriman domestik ke seluruh Indonesia dengan berbagai pilihan",
-                icon: Truck,
-                link: "/services/domestic-services"
-              },
-              { 
-                title: "Custom Clearance", 
-                desc: "Pengurusan dokumen bea cukai yang cepat dan akurat",
-                icon: CheckCircle,
-                link: "/services/custom-clearance"
-              }
-            ].map((service, index) => (
-              <div key={index} className="group bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 cursor-pointer" onClick={() => window.location.href = service.link}>
-                <service.icon className="text-orange-400 mb-6 group-hover:scale-110 transition-transform duration-300" size={48} />
-                <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                <p className="text-white/80 mb-6 leading-relaxed">{service.desc}</p>
-                <div className="flex items-center text-orange-400 group-hover:text-orange-300 transition-colors">
-                  <span className="font-medium">Pelajari Lebih Lanjut</span>
-                  <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" size={20} />
+              { title: t('generalCargo'), desc: t('generalDesc') },
+              { title: t('perishable'), desc: t('perishableDesc') },
+              { title: t('dangerous'), desc: t('dangerousDesc') }
+            ].map((cargo, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Plane className="text-white" size={24} />
                 </div>
+                <h3 className="text-xl font-semibold text-white mb-3">{cargo.title}</h3>
+                <p className="text-white/80">{cargo.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials/Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative">
+      {/* Main Destinations */}
+      <section className="py-20 relative">
+        <GeometricPattern className="bottom-10 left-10" />
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <h2 className="text-4xl font-bold text-white">Mengapa Memilih Kami?</h2>
-              <div className="space-y-6">
-                {[
-                  { icon: Award, title: "Berpengalaman", desc: "Tim profesional dengan pengalaman bertahun-tahun" },
-                  { icon: Clock, title: "Tepat Waktu", desc: "Komitmen pengiriman sesuai jadwal yang dijanjikan" },
-                  { icon: Shield, title: "Terpercaya", desc: "Keamanan dan keselamatan kargo adalah prioritas utama" }
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <item.icon className="text-white" size={24} />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
-                      <p className="text-white/80">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div className="relative">
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-orange-400 mb-2">100+</div>
-                    <div className="text-white">Happy Customers</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-orange-400 mb-2">50+</div>
-                    <div className="text-white">Cities Covered</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-orange-400 mb-2">24/7</div>
-                    <div className="text-white">Support</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-orange-400 mb-2">99%</div>
-                    <div className="text-white">On-Time Delivery</div>
-                  </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-6">{t('destinationsTitle')}</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              t('dest1'),
+              t('dest2'),
+              t('dest3'),
+              t('dest4')
+            ].map((dest, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-md rounded-xl p-6 flex items-center space-x-4">
+                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-sm">{index + 1}</span>
                 </div>
+                <span className="text-white font-medium">{dest}</span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-6">{t('processTitle')}</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { step: "01", title: t('step1'), desc: t('step1Desc') },
+              { step: "02", title: t('step2'), desc: t('step2Desc') },
+              { step: "03", title: t('step3'), desc: t('step3Desc') },
+              { step: "04", title: t('step4'), desc: t('step4Desc') }
+            ].map((process, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-lg">{process.step}</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{process.title}</h3>
+                <p className="text-white/80 text-sm">{process.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 relative">
+        <GeometricPattern className="top-20 right-20" />
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-12">
+            <h2 className="text-4xl font-bold text-white mb-6">{t('ctaTitle')}</h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              {t('ctaDescription')}
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg">
+                <Phone className="mr-2" size={20} />
+                {t('getQuote')}
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
+              >
+                <Mail className="mr-2" size={20} />
+                {t('contactUs')}
+              </Button>
             </div>
           </div>
         </div>
@@ -672,40 +377,14 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-blue-950 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                  <span className="text-blue-900 font-bold text-lg">bc</span>
-                </div>
-                <span className="text-white font-semibold">PT. Reta Berkat Jaya</span>
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                <span className="text-blue-900 font-bold text-lg">bc</span>
               </div>
-              <p className="text-white/80">
-                {t('trustedPartner')}
-              </p>
+              <span className="text-white font-semibold">PT. Reta Berkat Jaya</span>
             </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">{t('services')}</h4>
-              <ul className="space-y-2 text-white/80">
-                <li>{t('heroTitle1')}{t('heroTitle2')}</li>
-                <li>{t('oceanFreight')}</li>
-                <li>{t('airFreight')}</li>
-                <li>{t('customClearance')}</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">{t('contact')}</h4>
-              <div className="text-white/80">
-                <p>{t('email')}</p>
-                <p>{t('phone')}</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
-            <p>{t('copyright')}</p>
+            <p className="text-white/60">© 2024 PT. Reta Berkat Jaya. All rights reserved.</p>
           </div>
         </div>
       </footer>
