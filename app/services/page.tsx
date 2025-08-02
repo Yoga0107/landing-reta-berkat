@@ -79,14 +79,6 @@ export default function ServicesPage() {
         return translations[key] ? translations[key][language] : key;
     };
 
-/*************  ✨ Windsurf Command ⭐  *************/
-    /**
-     * Toggles the language of the page between Indonesian and English.
-     *
-     * This function is called when the language toggle button is clicked.
-     * It sets the language state to the opposite of the current language.
-     */
-/*******  c4cbc9d1-6fa7-48ed-9f28-4a2a1fcc3655  *******/
     const toggleLanguage = () => {
         setLanguage(prev => prev === 'id' ? 'en' : 'id');
     };

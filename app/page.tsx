@@ -24,8 +24,8 @@ const translations: Translations = {
   heroTitle2: { id: "IMPOR-", en: "IMPORT-" },
   heroTitle3: { id: "DOMESTIK", en: "DOMESTIC" },
   heroDescription: { 
-    id: "Solusi logistik komprehensif untuk semua kebutuhan pengiriman Anda. Dari angkutan udara hingga kargo laut, kami memberikan keunggulan di seluruh dunia.", 
-    en: "Comprehensive logistics solutions for all your shipping needs. From air freight to ocean cargo, we deliver excellence across the globe." 
+    id: "Solusi logistik komprehensif untuk semua kebutuhan pengiriman Anda. Dari angkutan darat, laut, dan udara, kami memberikan kenyamanan pengiriman domestik dan internasional.", 
+    en: "Comprehensive logistics solutions for all your shipping needs. From land, sea, and air transportation, we provide convenient domestic and international shipping." 
   },
   ourServices: { id: "Layanan Kami", en: "Our Services" },
   learnMore: { id: "Pelajari Lebih Lanjut", en: "Learn More" },
@@ -397,7 +397,7 @@ export default function Home() {
                   <Button 
                     onClick={() => scrollToSection('profile')}
                     variant="outline" 
-                    className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg transform hover:scale-105 transition-all duration-300"
+                    className="border-white text-black hover:bg-white hover:text-blue-900 px-8 py-3 text-lg transform hover:scale-105 transition-all duration-300"
                   >
                     {t('learnMore')}
                   </Button>
