@@ -15,42 +15,42 @@ interface Translations {
 const translations: Translations = {
   // Navigation
   backToServices: { id: "Kembali ke Layanan", en: "Back to Services" },
-  
+
   // Page Title
   exportImportService: { id: "Layanan Ekspor & Impor", en: "Export & Import Service" },
   exportImportSubtitle: { id: "Solusi lengkap untuk kebutuhan ekspor dan impor dengan layanan terintegrasi", en: "Complete solution for export and import needs with integrated services" },
-  
+
   // Hero Section
-  heroDescription: { 
-    id: "Layanan ekspor dan impor yang komprehensif dengan dukungan penuh dari dokumentasi hingga pengiriman. Kami membantu bisnis Anda berkembang di pasar global dengan solusi logistik yang efisien dan terpercaya.", 
-    en: "Comprehensive export and import services with full support from documentation to delivery. We help your business grow in the global market with efficient and reliable logistics solutions." 
+  heroDescription: {
+    id: "Layanan ekspor dan impor yang komprehensif dengan dukungan penuh dari dokumentasi hingga pengiriman. Kami membantu bisnis Anda berkembang di pasar global dengan solusi logistik yang efisien dan terpercaya.",
+    en: "Comprehensive export and import services with full support from documentation to delivery. We help your business grow in the global market with efficient and reliable logistics solutions."
   },
-  
+
   // Services
   exportService: { id: "Export Service", en: "Export Service" },
-  exportDesc: { 
-    id: "Layanan ekspor lengkap mulai dari dokumentasi, packaging, hingga pengiriman ke berbagai negara tujuan dengan prosedur yang sesuai regulasi internasional.", 
-    en: "Complete export service from documentation, packaging, to shipping to various destination countries with procedures compliant with international regulations." 
+  exportDesc: {
+    id: "Layanan ekspor lengkap mulai dari dokumentasi, packaging, hingga pengiriman ke berbagai negara tujuan dengan prosedur yang sesuai regulasi internasional.",
+    en: "Complete export service from documentation, packaging, to shipping to various destination countries with procedures compliant with international regulations."
   },
-  
+
   importService: { id: "Import Service", en: "Import Service" },
-  importDesc: { 
-    id: "Layanan impor yang mencakup pengurusan dokumen, custom clearance, dan distribusi barang impor ke seluruh Indonesia dengan proses yang cepat dan aman.", 
-    en: "Import service covering document processing, custom clearance, and distribution of imported goods throughout Indonesia with fast and secure processes." 
+  importDesc: {
+    id: "Layanan impor yang mencakup pengurusan dokumen, custom clearance, dan distribusi barang impor ke seluruh Indonesia dengan proses yang cepat dan aman.",
+    en: "Import service covering document processing, custom clearance, and distribution of imported goods throughout Indonesia with fast and secure processes."
   },
-  
+
   tradingConsultation: { id: "Trading Consultation", en: "Trading Consultation" },
-  tradingDesc: { 
-    id: "Konsultasi perdagangan internasional untuk membantu bisnis memahami regulasi, prosedur, dan strategi terbaik dalam ekspor impor.", 
-    en: "International trade consultation to help businesses understand regulations, procedures, and best strategies in export import." 
+  tradingDesc: {
+    id: "Konsultasi perdagangan internasional untuk membantu bisnis memahami regulasi, prosedur, dan strategi terbaik dalam ekspor impor.",
+    en: "International trade consultation to help businesses understand regulations, procedures, and best strategies in export import."
   },
-  
+
   documentHandling: { id: "Document Handling", en: "Document Handling" },
-  documentDesc: { 
-    id: "Penanganan lengkap dokumen ekspor impor termasuk invoice, packing list, certificate of origin, dan dokumen lainnya sesuai kebutuhan.", 
-    en: "Complete handling of export import documents including invoice, packing list, certificate of origin, and other documents as needed." 
+  documentDesc: {
+    id: "Penanganan lengkap dokumen ekspor impor termasuk invoice, packing list, certificate of origin, dan dokumen lainnya sesuai kebutuhan.",
+    en: "Complete handling of export import documents including invoice, packing list, certificate of origin, and other documents as needed."
   },
-  
+
   // Features
   featuresTitle: { id: "Keunggulan Layanan Ekspor Impor Kami", en: "Our Export Import Service Excellence" },
   feature1: { id: "Global Network", en: "Global Network" },
@@ -61,7 +61,7 @@ const translations: Translations = {
   feature3Desc: { id: "Layanan lengkap dari origin hingga destination", en: "Complete service from origin to destination" },
   feature4: { id: "Competitive Rate", en: "Competitive Rate" },
   feature4Desc: { id: "Tarif kompetitif dengan kualitas terjamin", en: "Competitive rates with guaranteed quality" },
-  
+
   // Commodity Types
   commodityTypesTitle: { id: "Jenis Komoditas", en: "Commodity Types" },
   manufacturing: { id: "Manufacturing Goods", en: "Manufacturing Goods" },
@@ -70,14 +70,14 @@ const translations: Translations = {
   agriculturalDesc: { id: "Produk pertanian seperti kopi, rempah, buah-buahan", en: "Agricultural products such as coffee, spices, fruits" },
   rawMaterials: { id: "Raw Materials", en: "Raw Materials" },
   rawMaterialsDesc: { id: "Bahan baku industri seperti logam, kimia, plastik", en: "Industrial raw materials such as metals, chemicals, plastics" },
-  
+
   // Countries
   countriesTitle: { id: "Negara Tujuan Utama", en: "Main Destination Countries" },
   country1: { id: "Asia: China, Jepang, Korea, Singapura", en: "Asia: China, Japan, Korea, Singapore" },
   country2: { id: "Eropa: Jerman, Belanda, Inggris, Italia", en: "Europe: Germany, Netherlands, UK, Italy" },
   country3: { id: "Amerika: USA, Kanada, Brasil, Meksiko", en: "America: USA, Canada, Brazil, Mexico" },
   country4: { id: "Timur Tengah: UAE, Arab Saudi, Qatar", en: "Middle East: UAE, Saudi Arabia, Qatar" },
-  
+
   // Process
   processTitle: { id: "Proses Ekspor Impor", en: "Export Import Process" },
   step1: { id: "Inquiry & Quote", en: "Inquiry & Quote" },
@@ -88,7 +88,7 @@ const translations: Translations = {
   step3Desc: { id: "Pengiriman dan pengurusan bea cukai", en: "Shipping and customs clearance" },
   step4: { id: "Delivery & Report", en: "Delivery & Report" },
   step4Desc: { id: "Pengantaran dan laporan pengiriman", en: "Delivery and shipping report" },
-  
+
   // CTA
   getQuote: { id: "Dapatkan Penawaran", en: "Get Quote" },
   contactUs: { id: "Hubungi Kami", en: "Contact Us" },
@@ -113,9 +113,8 @@ export default function ExportImportPage() {
         {[...Array(16)].map((_, i) => (
           <div
             key={i}
-            className={`w-3 h-3 border border-orange-400 ${
-              i % 3 === 0 ? 'bg-orange-400/30' : ''
-            } ${i % 5 === 0 ? 'w-6 h-6' : ''}`}
+            className={`w-3 h-3 border border-orange-400 ${i % 3 === 0 ? 'bg-orange-400/30' : ''
+              } ${i % 5 === 0 ? 'w-6 h-6' : ''}`}
           />
         ))}
       </div>
@@ -148,7 +147,7 @@ export default function ExportImportPage() {
               <Link href="/services" className="text-white hover:text-orange-400 transition-colors">
                 {t('backToServices')}
               </Link>
-              
+
               <button
                 onClick={toggleLanguage}
                 className="flex items-center space-x-2 text-white hover:text-orange-400 transition-colors bg-white/10 px-3 py-2 rounded-lg"
@@ -165,7 +164,7 @@ export default function ExportImportPage() {
       <section className="pt-24 pb-16 relative overflow-hidden">
         <GeometricPattern className="top-20 right-20" />
         <FloatingOrbs className="top-32 left-1/4" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -173,7 +172,7 @@ export default function ExportImportPage() {
                 <ArrowLeft size={20} className="mr-2" />
                 {t('backToServices')}
               </Link>
-              
+
               <div className="flex items-center space-x-4 mb-6">
                 <div className="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center">
                   <Globe className="text-white" size={32} />
@@ -182,23 +181,23 @@ export default function ExportImportPage() {
                   {t('exportImportService')}
                 </h1>
               </div>
-              
+
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
                 {t('exportImportSubtitle')}
               </p>
-              
+
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
                 {t('heroDescription')}
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg">
                   <Phone className="mr-2" size={20} />
                   {t('getQuote')}
                 </Button>
-                <Button 
-                  variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
+                <Button
+                  variant="outline"
+                  className="border-white text-black hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
                 >
                   <Mail className="mr-2" size={20} />
                   {t('contactUs')}
@@ -207,9 +206,9 @@ export default function ExportImportPage() {
             </div>
 
             <div className="relative">
-              <img 
-                src="https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Export Import" 
+              <img
+                src="https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Export Import"
                 className="rounded-2xl shadow-2xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 bg-orange-500 p-4 rounded-xl shadow-lg">
@@ -230,7 +229,7 @@ export default function ExportImportPage() {
       <section className="py-20 relative">
         <GeometricPattern className="bottom-20 left-20" />
         <FloatingOrbs className="bottom-32 right-20" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             {[
@@ -256,7 +255,7 @@ export default function ExportImportPage() {
       {/* Features Section */}
       <section className="py-20 relative">
         <GeometricPattern className="top-10 right-10" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">{t('featuresTitle')}</h2>
@@ -282,7 +281,7 @@ export default function ExportImportPage() {
       {/* Commodity Types */}
       <section className="py-20 relative">
         <FloatingOrbs className="top-20 right-20" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">{t('commodityTypesTitle')}</h2>
@@ -309,7 +308,7 @@ export default function ExportImportPage() {
       {/* Countries */}
       <section className="py-20 relative">
         <GeometricPattern className="bottom-10 left-10" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">{t('countriesTitle')}</h2>
@@ -362,22 +361,22 @@ export default function ExportImportPage() {
       {/* CTA Section */}
       <section className="py-20 relative">
         <GeometricPattern className="top-20 right-20" />
-        
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-12">
             <h2 className="text-4xl font-bold text-white mb-6">{t('ctaTitle')}</h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               {t('ctaDescription')}
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg">
                 <Phone className="mr-2" size={20} />
                 {t('getQuote')}
               </Button>
-              <Button 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
+              <Button
+                variant="outline"
+                className="border-white text-black hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
               >
                 <Mail className="mr-2" size={20} />
                 {t('contactUs')}

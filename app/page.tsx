@@ -20,9 +20,11 @@ const translations: Translations = {
   services: { id: "Layanan", en: "Services" },
   
   // Hero Section
-  heroTitle1: { id: "EKSPOR-", en: "EXPORT-" },
-  heroTitle2: { id: "IMPOR-", en: "IMPORT-" },
+  heroTitle1: { id: "EKSPOR", en: "EXPORT" },
+  heroTitle2: { id: "IMPOR", en: "IMPORT" },
   heroTitle3: { id: "DOMESTIK", en: "DOMESTIC" },
+  footerTitle1: { id: "Ekspor", en: "Export" },
+  footerTitle2: { id: "Impor", en: "Import" },
   heroDescription: { 
     id: "Solusi logistik komprehensif untuk semua kebutuhan pengiriman Anda. Dari angkutan darat, laut, dan udara, kami memberikan kenyamanan pengiriman domestik dan internasional.", 
     en: "Comprehensive logistics solutions for all your shipping needs. From land, sea, and air transportation, we provide convenient domestic and international shipping." 
@@ -134,8 +136,8 @@ const translations: Translations = {
   // Footer
   trustedPartner: { id: "Mitra terpercaya Anda untuk solusi logistik komprehensif di seluruh dunia.", en: "Your trusted partner for comprehensive logistics solutions worldwide." },
   contact: { id: "Kontak", en: "Contact" },
-  email: { id: "Email: info@retaberkatjaya.com", en: "Email: info@retaberkatjaya.com" },
-  phone: { id: "Telepon: +62 XXX XXX XXXX", en: "Phone: +62 XXX XXX XXXX" },
+  email: { id: "Email: jayacargoberkat@gmail.com", en: "Email: jayacargoberkat@gmail.com" },
+  phone: { id: "Telepon: +62 823 1277 3010", en: "Phone: +62 823 1277 3010" },
   copyright: { id: "© 2024 PT. Reta Berkat Jaya. Semua hak dilindungi.", en: "© 2024 PT. Reta Berkat Jaya. All rights reserved." }
 };
 
@@ -581,9 +583,6 @@ export default function Home() {
             <div className="order-1 lg:order-2 space-y-8">
               <h2 className="text-5xl font-bold text-white">{t('corporateValuesTitle')}</h2>
               
-              <p className="text-lg text-white leading-relaxed">
-                {t('valuesIntro')}
-              </p>
 
               <div className="space-y-8">
                 <div>
@@ -813,7 +812,7 @@ export default function Home() {
             <div>
               <h4 className="text-white font-semibold mb-4">{t('services')}</h4>
               <ul className="space-y-2 text-white/80">
-                <li>{t('heroTitle1')}{t('heroTitle2')}</li>
+                <li>{t('footerTitle1')} {t('footerTitle2')}</li>
                 <li>{t('oceanFreight')}</li>
                 <li>{t('airFreight')}</li>
                 <li>{t('customClearance')}</li>

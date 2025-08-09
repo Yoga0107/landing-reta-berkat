@@ -188,7 +188,7 @@ export default function DeliveryBySeaPage() {
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
+                  className="border-white text-black hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
                 >
                   <Mail className="mr-2" size={20} />
                   {t('contactUs')}
@@ -364,7 +364,7 @@ export default function DeliveryBySeaPage() {
               </Button>
               <Button 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
+                className="border-white text-black hover:bg-white hover:text-blue-900 px-8 py-3 text-lg"
               >
                 <Mail className="mr-2" size={20} />
                 {t('contactUs')}
